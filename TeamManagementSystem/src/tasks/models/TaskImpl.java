@@ -28,12 +28,6 @@ public abstract class TaskImpl implements Task {
 //        this.comments = new ArrayList<>();
 //        this.history = new ArrayList<>();
 //    }
-
-    @Override
-    public abstract PriorityEnums getPriority() ;
-
-
-    @Override
     public abstract Member getMember() ;
 
 
