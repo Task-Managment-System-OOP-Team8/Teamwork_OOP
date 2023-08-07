@@ -1,7 +1,9 @@
 package tasks.contracts;
 
+import java.util.ArrayList;
+
 public interface Commentable {
-    String getMessage();
+  ArrayList<String> getComments();
 
     String getAuthor();
 }
