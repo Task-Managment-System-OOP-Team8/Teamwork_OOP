@@ -1,6 +1,6 @@
 package tasks.models.enums;
 
-public enum FeedbackEnums {
+public enum FeedbackStatusEnums {
     NEW,
     UNSCHEDULED,
     SCHEDULED,

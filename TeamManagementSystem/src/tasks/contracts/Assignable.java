@@ -8,4 +8,5 @@ public interface Assignable {
     PriorityEnums getPriority();
 
    Member getMember();
+
 }

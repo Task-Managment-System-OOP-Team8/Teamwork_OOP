@@ -16,32 +16,29 @@ public abstract class TaskImpl implements Task {
     protected ArrayList<Comment> comments;
     protected ArrayList<String> history;
 
-    protected Member assignee;
+
 
 //TODO
 
-//    public TaskImpl(String title, int id, String description, Member assignee) {
-//        this.title = title;
-//        this.id = id;
-//        this.description = description;
-//        this.assignee = assignee;
-//        this.comments = new ArrayList<>();
-//        this.history = new ArrayList<>();
-//    }
-
-    @Override
-    public abstract PriorityEnums getPriority() ;
-
-
-    @Override
-    public abstract Member getMember() ;
+    public TaskImpl(String title, int id, String description) {
+        this.title = title;
+        this.id = id;
+        this.description = description;
+        this.comments = new ArrayList<>();
+        this.history = new ArrayList<>();
+    }
 
 
     @Override
     public abstract String getAuthor() ;
 
- //   @Override
-   // public abstract ArrayList<Commentable> getComments() ;
+    public void addComment (String author, String message) {
+        comments.add(new Comment(author, message));
+    }
+
+    public void addHistoryEntry (String input) {
+        history.add(input);
+    }
 
     @Override
     public abstract String getTitle() ;

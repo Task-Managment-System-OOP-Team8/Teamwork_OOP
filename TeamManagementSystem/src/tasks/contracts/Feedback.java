@@ -1,10 +1,10 @@
 package tasks.contracts;
 
-import tasks.models.enums.FeedbackEnums;
+import tasks.models.enums.FeedbackStatusEnums;
 
 public interface Feedback {
 
     int getRating();
-    FeedbackEnums getStatus();
+    FeedbackStatusEnums getStatus();
 
 }

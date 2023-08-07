@@ -3,18 +3,18 @@ package tasks;
 import tasks.contracts.Commentable;
 
 import java.util.ArrayList;
-
+//TODO
 public class Comment implements Commentable {
 
-private String comments;
+private final String comments;
 private String author;
 
 
     public Comment(String comments, String author) {
-        this.comments = comments;
-        this.author = author;
+        this.comments=comments;
+       setAuthor(author);
     }
-//TODO
+
     @Override
     public ArrayList<String> getComments() {
         return new ArrayList<>();
@@ -23,5 +23,15 @@ private String author;
     @Override
     public String getAuthor() {
         return author;
+    }
+
+
+
+//    public void setComments(String comments) {
+//        this.comments = comments;
+//    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
