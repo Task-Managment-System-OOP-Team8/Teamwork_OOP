@@ -1,9 +1,7 @@
 package tasks.models;
 
-import jdk.jshell.Snippet;
 import tasks.Comment;
 import tasks.contracts.Bug;
-import tasks.contracts.Commentable;
 import tasks.models.enums.BugStatusEnums;
 import tasks.models.enums.PriorityEnums;
 import tasks.models.enums.SeverityEnums;
@@ -14,27 +12,21 @@ import java.util.ArrayList;
 public class BugImpl extends TaskImpl implements Bug {
 
 
-      private String title;
-    private String description;
+
     private ArrayList<String> steps;
     private SeverityEnums severity;
     private BugStatusEnums status;
     private Member assignee;
     private PriorityEnums priority;
-    private ArrayList<Comment> comments;
-    private ArrayList<String> history;
 
-        public BugImpl(String title, String description, ArrayList<String> steps, SeverityEnums severity, BugStatusEnums status,
-                   Member assignee, PriorityEnums priority) {
-        this.title = title;
-        this.description = description;
+
+        public BugImpl(String title,int id, String description, ArrayList<String> steps, SeverityEnums severity, BugStatusEnums status, PriorityEnums priority) {
+            super(title,id,description);
         this.steps =steps;
         this.severity = severity;
         this.status = status;
-        this.assignee = assignee;
         this.priority = priority;
-        this.comments = new ArrayList<>();
-        this.history = new ArrayList<>();
+
     }
     @Override
     public ArrayList<String> getSteps() {
@@ -61,13 +53,15 @@ public class BugImpl extends TaskImpl implements Bug {
         return assignee;
     }
 
-    @Override
-    public String getAuthor() {
-        return null;
-    }
 
     @Override
-    public ArrayList<String> getComments() {
+    public ArrayList<Comment> getComments() {
+        return new ArrayList<>(comments);
+    }
+
+//TODO
+    @Override
+    public String getAuthor() {
         return null;
     }
 
@@ -80,10 +74,4 @@ public class BugImpl extends TaskImpl implements Bug {
     public String getDescription() {
         return description;
     }
-//TODO
-
-
-
-
-
 }

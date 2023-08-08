@@ -19,18 +19,17 @@ public class StoryImpl extends TaskImpl implements Story {
     public static final int DESCRIPTION_MIN_LENGTH = 10;
     public static final String INVALID_DESCRIPTION_LENGTH = String.format(
             "Description must be between %d and %d symbols", DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH);
-    private String title;
-    private String description;
+
     private PriorityEnums priority;
     private SizeEnums size;
     private StoryStatusEnums status;
     private Member assignee;
-    private ArrayList<Comment> comments;
-    private ArrayList<String> history;
 
-    public StoryImpl(String title, String description) {
-        this.title = title;
-        this.description = description;
+
+    public StoryImpl(String title,int id, String description) {
+        super(title,id,description);
+
+
     }
 
     private void setTitle(String title) {
@@ -48,7 +47,7 @@ public class StoryImpl extends TaskImpl implements Story {
     }
 //TODO
     @Override
-    public ArrayList<String> getComments() {
+    public ArrayList<Comment> getComments() {
         return null;
     }
 

@@ -16,7 +16,7 @@ private String author;
     }
 
     @Override
-    public ArrayList<String> getComments() {
+    public ArrayList<Comment> getComments() {
         return new ArrayList<>();
     }
 

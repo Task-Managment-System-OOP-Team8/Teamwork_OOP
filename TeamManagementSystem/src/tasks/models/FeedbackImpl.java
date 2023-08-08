@@ -18,16 +18,15 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
     public static final int TITLE_MIN_LENGTH = 10;
     public static final String INVALID_TITLE_LENGTH = String.format(
             "Title must be between %d and %d symbols", TITLE_MIN_LENGTH, TITLE_MAX_LENGTH);
-    private String title;
-    private String description;
+
     private int rating;
     private FeedbackStatusEnums status;
-    private ArrayList<Comment> comments;
-    private ArrayList<String> history;
 
-    public FeedbackImpl(String title, String description, int rating) {
-        this.title = title;
-        this.description = description;
+
+
+
+    public FeedbackImpl(String title,int id, String description, int rating) {
+        super(title,id,description);
         this.rating = rating;
     }
 
@@ -49,8 +48,8 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
     }
 //TODO
     @Override
-    public ArrayList<String> getComments() {
-        return null;
+    public ArrayList<Comment> getComments() {
+        return new ArrayList<>(comments);
     }
 
     @Override
@@ -63,10 +62,6 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
         return status;
     }
 
-    @Override
-    public Member getMember() {
-        return assignee;
-    }
 //TODO
     @Override
     public String getAuthor() {
