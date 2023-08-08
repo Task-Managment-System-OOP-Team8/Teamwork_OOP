@@ -25,14 +25,10 @@ public class Board implements Trackable {
         return name;
     }
     //TODO
-
     @Override
-    public ArrayList<Task> getTask() {
+    public ArrayList<Task> getTasks() {
         return null;
-
-       }
-
-
+    }
     //TODO
     @Override
     public ArrayList<String> getHistory() {

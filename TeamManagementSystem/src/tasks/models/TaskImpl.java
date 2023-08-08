@@ -1,15 +1,9 @@
 package tasks.models;
 
 import tasks.Comment;
-import tasks.contracts.Commentable;
 import tasks.contracts.Task;
-import tasks.models.enums.PriorityEnums;
-import teams.Member;
-
 import java.util.ArrayList;
-
 public abstract class TaskImpl implements Task {
-
     protected String title;
     protected int id;
     protected String description;
