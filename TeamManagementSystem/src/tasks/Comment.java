@@ -1,7 +1,6 @@
 package tasks;
 
 import tasks.contracts.Commentable;
-
 import java.util.ArrayList;
 //TODO
 public class Comment implements Commentable {

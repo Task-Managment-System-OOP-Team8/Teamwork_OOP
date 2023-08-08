@@ -1,7 +1,6 @@
 package teams;
 
 import Utils.ValidationHelpers;
-
 import java.util.ArrayList;
 
 public class Teams implements teams.contracts.Team {

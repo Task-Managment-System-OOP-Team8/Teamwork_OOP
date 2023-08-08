@@ -61,7 +61,7 @@ public class StoryImpl extends TaskImpl implements Story {
     public Member getMember() {
         return assignee;
     }
-
+    //TODO
     @Override
     public String getAuthor() {
         return null;
