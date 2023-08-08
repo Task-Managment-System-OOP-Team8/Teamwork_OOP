@@ -10,9 +10,9 @@ private final String comments;
 private String author;
 
 
-    public Comment(String comments, String author) {
+    public Comment(String author, String comments) {
+        setAuthor(author);
         this.comments=comments;
-       setAuthor(author);
     }
 
     @Override
