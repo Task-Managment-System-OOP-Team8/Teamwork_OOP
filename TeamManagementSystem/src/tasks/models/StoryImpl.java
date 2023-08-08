@@ -28,6 +28,7 @@ public class StoryImpl extends TaskImpl implements Story {
 
     public StoryImpl(String title,int id, String description) {
         super(title,id,description);
+        this.status = StoryStatusEnums.NOT_DONE;
 
 
     }

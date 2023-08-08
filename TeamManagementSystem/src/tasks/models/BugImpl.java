@@ -24,7 +24,7 @@ public class BugImpl extends TaskImpl implements Bug {
             super(title,id,description);
         this.steps =steps;
         this.severity = severity;
-        this.status = status;
+        this.status = BugStatusEnums.ACTIVE;
         this.priority = priority;
 
     }
