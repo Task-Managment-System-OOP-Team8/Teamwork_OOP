@@ -21,8 +21,8 @@ public class TaskManagementEngineImpl implements TaskManagementEngine {
     private static final String REPORT_SEPARATOR = "";
 
 
-    private final CommandFactory commandFactory;
-    private final TaskManagementRepository taskManagementRepository;
+    private final CommandFactoryImpl commandFactory;
+    private final TaskManagementRepositoryImpl taskManagementRepository;
     public TaskManagementEngineImpl() {
 
         commandFactory = new CommandFactoryImpl();
