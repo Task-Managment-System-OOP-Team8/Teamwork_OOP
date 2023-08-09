@@ -20,8 +20,8 @@ public class TaskManagementEngineImpl implements TaskManagementEngine {
     private static final String COMMENT_CLOSE_SYMBOL = "}}";
 
 
-    private final CommandFactory commandFactory;
-    private final TaskManagementRepository taskManagementRepository;
+    private final CommandFactoryImpl commandFactory;
+    private final TaskManagementRepositoryImpl taskManagementRepository;
     public TaskManagementEngineImpl() {
 
         commandFactory = new CommandFactoryImpl();

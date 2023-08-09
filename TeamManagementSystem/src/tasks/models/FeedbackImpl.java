@@ -24,7 +24,7 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
 
 
     public FeedbackImpl(int id,String title, String description, int rating) {
-        super(id,title,description);
+        super(title,description);
         this.rating = rating;
     }
 
