@@ -25,10 +25,12 @@ public class StoryImpl extends TaskImpl implements Story {
     private String assignee;
 
 
-    public StoryImpl(String title,int id, String description) {
+    public StoryImpl(int id,String title, String description,PriorityEnums priority,SizeEnums size,String assignee) {
         super(id,title,description);
+        this.priority=priority;
+        this.size=size;
         this.status = StatusEnums.NOT_DONE;
-
+       setAssignee(assignee);
 
     }
 
@@ -36,14 +38,14 @@ public class StoryImpl extends TaskImpl implements Story {
         ValidationHelpers.ValidateIntRange(description.length(), DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, INVALID_DESCRIPTION_LENGTH);
         this.description = description;
     }
-
+    //TODO
     private void setAssignee(String assignee) {
         this.assignee = assignee;
     }
-//TODO
+
     @Override
     public ArrayList<Comment> getComments() {
-        return null;
+        return new ArrayList<>(comments);
     }
 
     @Override

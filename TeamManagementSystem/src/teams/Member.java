@@ -16,8 +16,8 @@ public class Member implements Trackable {
 
     public Member(String name) {
         this.name = name;
-        tasks = new ArrayList<>();
-        history = new ArrayList<>();
+        this.tasks = new ArrayList<>();
+        this.history = new ArrayList<>();
     }
 
     private void setName(String name) {

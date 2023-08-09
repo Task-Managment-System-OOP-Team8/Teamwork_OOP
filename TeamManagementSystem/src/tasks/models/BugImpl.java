@@ -13,14 +13,13 @@ public class BugImpl extends TaskImpl implements Bug {
 
     private ArrayList<String> steps;
     private SeverityEnums severity;
-    private StatusEnums status;
+    private final StatusEnums status;
     private String assignee;
     private PriorityEnums priority;
 
 
-    public BugImpl(int id, String title, String description, ArrayList<String> steps, PriorityEnums priority,
-                   SeverityEnums severity, StatusEnums status, String assignee, ArrayList<Comment>comments,
-                   ArrayList<String> getHistory) {
+    public BugImpl(int id, String title, String description, PriorityEnums priority,
+                   SeverityEnums severity, String assignee) {
         super(id,title, description);
         this.steps = new ArrayList<>();
         this.priority=priority;
@@ -31,6 +30,7 @@ public class BugImpl extends TaskImpl implements Bug {
     }
 
     private void setAssignee(String assignee) {
+        this.assignee=assignee;
     }
 
     @Override

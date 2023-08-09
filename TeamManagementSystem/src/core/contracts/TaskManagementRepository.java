@@ -1,6 +1,7 @@
 package core.contracts;
 
 import tasks.Comment;
+import tasks.History;
 import tasks.contracts.Bug;
 import tasks.contracts.Feedback;
 import tasks.contracts.Story;
@@ -20,24 +21,24 @@ public interface TaskManagementRepository {
 
     void addMember(Member memberToAdd);
 
-    Member createMember(String name, ArrayList<Task>tasks,ArrayList<String>history);
+    Member createMember(String name);
 
-    Teams createTeam(String name, ArrayList<Member> members, ArrayList<Board> boards);
+    Teams createTeam(String name);
 
 
     Board createBoard(String boardName);
 
 
-   Bug createBug (String title, int id, String description, ArrayList<String> steps, SeverityEnums severity,
-                  StatusEnums status, PriorityEnums priority, Member assignee);  //?
+   Bug createBug ( String title, String description, PriorityEnums priority,
+                  SeverityEnums severity, String assignee);  //?
 
-    Story createStory(String title, int id, String description, StoryStatusEnums status, PriorityEnums priority,
-                      SizeEnums size,Member assignee);  //?
+    Story createStory(String title, String description,PriorityEnums priority,SizeEnums size,String assignee);  //?
 
-    Feedback createFeedback(String title, int id, String description,int rating, FeedbackStatusEnums status,
-                            SizeEnums size);
+    Feedback createFeedback(String title, String description, int rating);
 
     Comment createComment(String author, String message);
+
+    History showAllHistory( ArrayList<String> history);
 
 
 }

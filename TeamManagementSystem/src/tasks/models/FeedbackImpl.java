@@ -18,14 +18,15 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
             "Title must be between %d and %d symbols", TITLE_MIN_LENGTH, TITLE_MAX_LENGTH);
 
     private int rating;
-    private StatusEnums status;
+    private final StatusEnums status;
 
 
 
 
     public FeedbackImpl(int id,String title, String description, int rating) {
         super(id,title,description);
-        this.rating = rating;
+       setRating(rating);
+        this.status=StatusEnums.NEW;
     }
 
     private void setRating(int rating) {
@@ -44,7 +45,7 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
 
     @Override
     public StatusEnums getStatus() {
-        return null;
+        return status;
     }
 
     //TODO
