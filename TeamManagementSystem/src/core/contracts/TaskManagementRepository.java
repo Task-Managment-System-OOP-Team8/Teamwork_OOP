@@ -24,8 +24,9 @@ public interface TaskManagementRepository {
 
     Teams createTeam(String name, ArrayList<Member> members, ArrayList<Board> boards);
 
-//TODO
-//Create Board ? - (board must be created in a team.
+
+    Board createBoard(String boardName);
+
 
    Bug createBug (String title, int id, String description, ArrayList<String> steps, SeverityEnums severity,
                   BugStatusEnums status, PriorityEnums priority, Member assignee);  //?

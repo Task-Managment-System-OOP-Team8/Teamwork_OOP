@@ -14,9 +14,9 @@ public abstract class TaskImpl implements Task {
 
 //TODO
 
-    public TaskImpl(String title, int id, String description) {
-        this.title = title;
+    public TaskImpl( int id,String title, String description) {
         this.id = id;
+        this.title = title;
         this.description = description;
         this.comments = new ArrayList<>();
         this.history = new ArrayList<>();

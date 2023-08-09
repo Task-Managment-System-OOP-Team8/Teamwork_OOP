@@ -6,4 +6,7 @@ public interface Task extends Commentable {
     int getId();
 
 
+    //status
+
+
 }

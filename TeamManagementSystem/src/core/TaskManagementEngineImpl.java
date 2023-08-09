@@ -2,6 +2,7 @@ package core;
 
 import commands.contracts.Command;
 import core.contracts.CommandFactory;
+import core.contracts.TaskManagementEngine;
 import core.contracts.TaskManagementRepository;
 
 import java.util.ArrayList;
@@ -9,16 +10,20 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class TaskManagementEngineImpl {
+public class TaskManagementEngineImpl implements TaskManagementEngine {
 
-/*
+
     private static final String EMPTY_COMMAND_ERROR = "Command cannot be empty.";
     private static final String TERMINATION_COMMAND = "Exit";
+    private static final String COMMENT_OPEN_SYMBOL = "{{";
+    private static final String MAIN_SPLIT_SYMBOL = " ";
+    private static final String COMMENT_CLOSE_SYMBOL = "}}";
 
 
     private final CommandFactory commandFactory;
     private final TaskManagementRepository taskManagementRepository;
     public TaskManagementEngineImpl() {
+
         commandFactory = new CommandFactoryImpl();
         taskManagementRepository = new TaskManagementRepositoryImpl();
 
@@ -91,5 +96,5 @@ public class TaskManagementEngineImpl {
     private void print(String result) {
         System.out.println(result);
         System.out.println(REPORT_SEPARATOR);
-    } */
+    }
 }
