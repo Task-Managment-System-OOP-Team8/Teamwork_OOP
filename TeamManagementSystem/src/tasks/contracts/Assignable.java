@@ -7,6 +7,6 @@ public interface Assignable {
 
     PriorityEnums getPriority();
 
-   String getMember();
+    String getAssignee();
 
 }

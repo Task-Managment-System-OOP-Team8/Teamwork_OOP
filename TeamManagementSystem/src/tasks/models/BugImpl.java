@@ -2,10 +2,9 @@ package tasks.models;
 
 import tasks.Comment;
 import tasks.contracts.Bug;
-import tasks.models.enums.BugStatusEnums;
+import tasks.models.enums.StatusEnums;
 import tasks.models.enums.PriorityEnums;
 import tasks.models.enums.SeverityEnums;
-import teams.Member;
 
 import java.util.ArrayList;
 
@@ -14,19 +13,19 @@ public class BugImpl extends TaskImpl implements Bug {
 
     private ArrayList<String> steps;
     private SeverityEnums severity;
-    private BugStatusEnums status;
+    private StatusEnums status;
     private String assignee;
     private PriorityEnums priority;
 
 
-    public BugImpl(int id,String title, String description, ArrayList<String> steps, PriorityEnums priority,
-                   SeverityEnums severity, BugStatusEnums status,String assignee,ArrayList<Comment>comments,
+    public BugImpl(int id, String title, String description, ArrayList<String> steps, PriorityEnums priority,
+                   SeverityEnums severity, StatusEnums status, String assignee, ArrayList<Comment>comments,
                    ArrayList<String> getHistory) {
         super(id,title, description);
         this.steps = new ArrayList<>();
         this.priority=priority;
         this.severity=severity;
-       setStatus(BugStatusEnums.ACTIVE);
+       this.status = StatusEnums.ACTIVE;
       setAssignee(assignee);
 
     }
@@ -45,18 +44,18 @@ public class BugImpl extends TaskImpl implements Bug {
     }
 
     @Override
-    public BugStatusEnums getBugStatus() {
+    public StatusEnums getStatus() {
         return status;
+    }
+
+    @Override
+    public String getAssignee() {
+        return null;
     }
 
     @Override
     public PriorityEnums getPriority() {
         return priority;
-    }
-
-    @Override
-    public String getMember() {
-        return null;
     }
 
 //    @Override
@@ -86,20 +85,14 @@ public class BugImpl extends TaskImpl implements Bug {
         return description;
     }
 
-    public void setSteps(ArrayList<String> steps) {
+    private void setSteps(ArrayList<String> steps) {
         this.steps = steps;
     }
 
-    public void setSeverity(SeverityEnums severity) {
+    private void setSeverity(SeverityEnums severity) {
         this.severity = severity;
     }
-
-    public void setStatus(BugStatusEnums status) {
-        this.status = status;
-    }
-
-
-    public void setPriority(PriorityEnums priority) {
+    private void setPriority(PriorityEnums priority) {
         this.priority = priority;
     }
 }

@@ -5,8 +5,7 @@ import tasks.Comment;
 import tasks.contracts.Story;
 import tasks.models.enums.PriorityEnums;
 import tasks.models.enums.SizeEnums;
-import tasks.models.enums.StoryStatusEnums;
-import teams.Member;
+import tasks.models.enums.StatusEnums;
 
 import java.util.ArrayList;
 
@@ -22,28 +21,23 @@ public class StoryImpl extends TaskImpl implements Story {
 
     private PriorityEnums priority;
     private SizeEnums size;
-    private StoryStatusEnums status;
-    private Member assignee;
+    private StatusEnums status;
+    private String assignee;
 
 
     public StoryImpl(String title,int id, String description) {
         super(id,title,description);
-        this.status = StoryStatusEnums.NOT_DONE;
+        this.status = StatusEnums.NOT_DONE;
 
 
     }
 
-    private void setTitle(String title) {
-        ValidationHelpers.ValidateIntRange(title.length(), TITLE_MIN_LENGTH, TITLE_MAX_LENGTH, INVALID_TITLE_LENGTH);
-        this.title = title;
-    }
-
-    private void setDescription(String description) {
+    protected void setDescription(String description) {
         ValidationHelpers.ValidateIntRange(description.length(), DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, INVALID_DESCRIPTION_LENGTH);
         this.description = description;
     }
 
-    private void setAssignee(Member assignee) {
+    private void setAssignee(String assignee) {
         this.assignee = assignee;
     }
 //TODO
@@ -58,8 +52,13 @@ public class StoryImpl extends TaskImpl implements Story {
     }
 
     @Override
-    public Member getMember() {
+    public String getAssignee() {
         return assignee;
+    }
+
+    @Override
+    public StatusEnums getStatus() {
+        return status;
     }
     //TODO
     @Override

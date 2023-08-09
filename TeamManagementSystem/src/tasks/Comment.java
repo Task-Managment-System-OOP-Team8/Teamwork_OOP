@@ -5,7 +5,7 @@ import java.util.ArrayList;
 //TODO
 public class Comment implements Commentable {
 
-private final String comments;
+private String comments;
 private String author;
 
 
@@ -26,11 +26,11 @@ private String author;
 
 
 
-//    public void setComments(String comments) {
-//        this.comments = comments;
-//    }
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
 
-    public void setAuthor(String author) {
+    private void setAuthor(String author) {
         this.author = author;
     }
 }

@@ -29,7 +29,7 @@ public interface TaskManagementRepository {
 
 
    Bug createBug (String title, int id, String description, ArrayList<String> steps, SeverityEnums severity,
-                  BugStatusEnums status, PriorityEnums priority, Member assignee);  //?
+                  StatusEnums status, PriorityEnums priority, Member assignee);  //?
 
     Story createStory(String title, int id, String description, StoryStatusEnums status, PriorityEnums priority,
                       SizeEnums size,Member assignee);  //?

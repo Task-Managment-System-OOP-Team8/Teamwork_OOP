@@ -1,9 +1,9 @@
 package tasks.models;
 
-import Utils.ValidationHelpers;
 import tasks.Comment;
 import tasks.contracts.Feedback;
-import tasks.models.enums.FeedbackStatusEnums;
+import tasks.models.enums.StatusEnums;
+
 import java.util.ArrayList;
 
 public class FeedbackImpl extends TaskImpl implements Feedback {
@@ -18,7 +18,7 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
             "Title must be between %d and %d symbols", TITLE_MIN_LENGTH, TITLE_MAX_LENGTH);
 
     private int rating;
-    private FeedbackStatusEnums status;
+    private StatusEnums status;
 
 
 
@@ -26,19 +26,6 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
     public FeedbackImpl(int id,String title, String description, int rating) {
         super(id,title,description);
         this.rating = rating;
-    }
-
-    private void setTitle(String title) {
-        ValidationHelpers.ValidateIntRange(title.length(),
-                TITLE_MIN_LENGTH, TITLE_MAX_LENGTH, INVALID_TITLE_LENGTH);
-        this.title = title;
-    }
-
-
-    private void setDescription(String description) {
-        ValidationHelpers.ValidateIntRange(description.length(),
-                DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, INVALID_DESCRIPTION_LENGTH);
-        this.description = description;
     }
 
     private void setRating(int rating) {
@@ -56,11 +43,11 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
     }
 
     @Override
-    public FeedbackStatusEnums getStatus() {
-        return status;
+    public StatusEnums getStatus() {
+        return null;
     }
 
-//TODO
+    //TODO
     @Override
     public String getAuthor() {
         return null;
