@@ -1,10 +1,13 @@
 package tasks.contracts;
 
-import java.util.ArrayList;
+import tasks.models.enums.StatusEnums;
 
-public interface Task {
+public interface Task extends Commentable {
     String getTitle();
     String getDescription();
     int getId();
-    ArrayList<Commentable> getComments();
+
+    StatusEnums getStatus();
+
+
 }
