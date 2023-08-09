@@ -18,9 +18,9 @@ public class BugImpl extends TaskImpl implements Bug {
     private PriorityEnums priority;
 
 
-    public BugImpl(int id, String title, String description, PriorityEnums priority,
+    public BugImpl( String title, String description, PriorityEnums priority,
                    SeverityEnums severity, String assignee) {
-        super(id,title, description);
+        super(title, description);
         this.steps = new ArrayList<>();
         this.priority=priority;
         this.severity=severity;

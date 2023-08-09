@@ -9,16 +9,17 @@ import tasks.models.enums.StatusEnums;
 import java.util.ArrayList;
 
 public abstract class TaskImpl implements Task {
-    public static final int TITLE_MIN_LENGTH = 10;
-    public static final int TITLE_MAX_LENGTH = 50;
-    public static final String INVALID_TITLE = String.format(
+    private static final int TITLE_MIN_LENGTH = 10;
+    private static final int TITLE_MAX_LENGTH = 50;
+    private static final String INVALID_TITLE = String.format(
             "Title must be between %d and %d symbols", TITLE_MIN_LENGTH, TITLE_MAX_LENGTH);
-    public static final int DESCRIPTION_MIN_LENGTH = 10;
-    public static final int DESCRIPTION_MAX_LENGTH = 500;
-    public static final String INVALID_DESCRIPTION = String.format(
+    private static final int DESCRIPTION_MIN_LENGTH = 10;
+    private static final int DESCRIPTION_MAX_LENGTH = 500;
+    private static final String INVALID_DESCRIPTION = String.format(
             "Description must be between %d and %d symbols", DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH);
     protected String title;
     private final int id;
+    public  static int totalId=0;
     protected String description;
     protected ArrayList<Comment> comments;
     protected ArrayList<History> history;
@@ -26,8 +27,9 @@ public abstract class TaskImpl implements Task {
     private StatusEnums status;
 
 //TODO
-    public TaskImpl(int id,String title, String description) {
-        this.id = id;
+    public TaskImpl(String title, String description) {
+        this.id = totalId;
+        totalId++;
         this.title = title;
         this.description = description;
         this.comments = new ArrayList<>();

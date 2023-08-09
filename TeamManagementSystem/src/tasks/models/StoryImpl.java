@@ -25,8 +25,8 @@ public class StoryImpl extends TaskImpl implements Story {
     private String assignee;
 
 
-    public StoryImpl(int id,String title, String description,PriorityEnums priority,SizeEnums size,String assignee) {
-        super(id,title,description);
+    public StoryImpl(String title, String description,PriorityEnums priority,SizeEnums size,String assignee) {
+        super(title,description);
         this.priority=priority;
         this.size=size;
         this.status = StatusEnums.NOT_DONE;
@@ -62,6 +62,7 @@ public class StoryImpl extends TaskImpl implements Story {
     public StatusEnums getStatus() {
         return status;
     }
+
     //TODO
     @Override
     public String getAuthor() {

@@ -5,7 +5,6 @@ import tasks.History;
 import tasks.contracts.Bug;
 import tasks.contracts.Feedback;
 import tasks.contracts.Story;
-import tasks.contracts.Task;
 import tasks.models.enums.*;
 import teams.Board;
 import teams.Member;
@@ -19,7 +18,7 @@ public interface TaskManagementRepository {
     List<Member> getMembers();
 
 
-    void addMember(Member memberToAdd);
+    Member addMember(Member memberToAdd);
 
     Member createMember(String name);
 

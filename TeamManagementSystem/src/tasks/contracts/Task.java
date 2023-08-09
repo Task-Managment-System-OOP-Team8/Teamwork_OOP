@@ -9,5 +9,5 @@ public interface Task extends Commentable {
 
     StatusEnums getStatus();
 
-
+//comments? history?
 }

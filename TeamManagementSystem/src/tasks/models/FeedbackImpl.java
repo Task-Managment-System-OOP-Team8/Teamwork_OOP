@@ -23,10 +23,11 @@ public class FeedbackImpl extends TaskImpl implements Feedback {
 
 
 
-    public FeedbackImpl(int id,String title, String description, int rating) {
-        super(id,title,description);
+    public FeedbackImpl(String title, String description, int rating) {
+        super(title,description);
        setRating(rating);
         this.status=StatusEnums.NEW;
+
     }
 
     private void setRating(int rating) {

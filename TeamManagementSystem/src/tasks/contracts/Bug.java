@@ -6,7 +6,7 @@ import tasks.models.enums.SeverityEnums;
 import java.util.ArrayList;
 
 
-public interface Bug extends Assignable {
+public interface Bug extends Assignable,Task {
     ArrayList<String> getSteps();
     SeverityEnums getSeverity();
 

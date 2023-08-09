@@ -30,15 +30,15 @@ public class Member implements Trackable {
     public String getName() {
         return name;
     }
-    //TODO
+
     @Override
     public ArrayList<Task> getTasks() {
-        return null;
+        return new ArrayList<>(tasks);
     }
     //TODO
     @Override
     public ArrayList<String> getHistory() {
-        return null;
+        return new ArrayList<>(history);
     }
 
     public void addTasks(Task task) {

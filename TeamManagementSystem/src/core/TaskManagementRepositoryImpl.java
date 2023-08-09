@@ -31,11 +31,12 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     private List<BugImpl> bugs;
     private List<StoryImpl> stories;
     private List<FeedbackImpl> feedbacks;
-    private List<Comment>comments;
+    private List<Comment> comments;
 
+    //List <Task> task;
 
     public TaskManagementRepositoryImpl() {
-        nextId=0;
+        nextId = 0;
     }
 
     @Override
@@ -44,11 +45,12 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public void addMember(Member memberToAdd) {
+    public Member addMember(Member memberToAdd) {
         if (members.contains(memberToAdd)) {
             throw new IllegalArgumentException(THIS_MEMBER_ALREADY_EXISTS);
         }
         members.add(memberToAdd);
+        return memberToAdd;
     }
 
     @Override
@@ -69,7 +71,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     @Override
     public Bug createBug( String title, String description, PriorityEnums priority,
                          SeverityEnums severity, String assignee) {
-        BugImpl bug = new BugImpl(++nextId,title,description,priority,severity,assignee);
+        BugImpl bug = new BugImpl(title,description,priority,severity,assignee);
         this.bugs.add(bug);
         return bug;
     }
@@ -77,14 +79,14 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     @Override
     public Story createStory(String title, String description,PriorityEnums priority,
                              SizeEnums size,String assignee) {
-        StoryImpl story = new StoryImpl(++nextId,title,description,priority,size,assignee);
+        StoryImpl story = new StoryImpl(title,description,priority,size,assignee);
         this.stories.add(story);
         return story;
     }
 
     @Override
     public Feedback createFeedback(String title, String description, int rating) {
-        FeedbackImpl feedback = new FeedbackImpl(++nextId,title,description,rating);
+        FeedbackImpl feedback = new FeedbackImpl(title,description,rating);
         this.feedbacks.add(feedback);
         return feedback;
     }
