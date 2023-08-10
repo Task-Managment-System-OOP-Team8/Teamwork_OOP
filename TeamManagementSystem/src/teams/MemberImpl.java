@@ -1,11 +1,12 @@
 package teams;
 
 import Utils.ValidationHelpers;
+import tasks.Comment;
 import tasks.contracts.Task;
-import teams.contracts.Trackable;
+import teams.contracts.Member;
 import java.util.ArrayList;
 
-public class Member implements Trackable {
+public class MemberImpl implements Member {
     public static final int MEMBER_NAME_MAX_LENGTH = 15;
     public static final int MEMBER_NAME_MIN_LENGTH = 5;
     public static final String INVALID_MEMBER_NAME = String.format(
@@ -14,8 +15,8 @@ public class Member implements Trackable {
     private ArrayList<Task> tasks;
     private ArrayList<String> history;
 
-    public Member(String name) {
-        this.name = name;
+    public MemberImpl(String name) {
+        setName(name);
         this.tasks = new ArrayList<>();
         this.history = new ArrayList<>();
     }
@@ -41,10 +42,27 @@ public class Member implements Trackable {
         return new ArrayList<>(history);
     }
 
-    public void addTasks(Task task) {
+    @Override
+    public void addTask(Task task) {
         tasks.add(task);
     }
 
+    @Override
+    public void removeTask(Task task) {
+        tasks.remove(task);
+
+    }
+
+    @Override
+    public void addCommentToTask(Task taskToAddComment, Comment commentToAdd) {
+
+    }
+
+    @Override
+    public void removeCommentToTask(Task taskToRemoveComment, Comment commentToRemove) {
+
+    }
+    //TODO
     public void addActivity(String activity) {
         history.add(activity);
     }

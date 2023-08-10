@@ -2,7 +2,7 @@ package commands;
 
 import Utils.ValidationHelpers;
 import core.contracts.TaskManagementRepository;
-import teams.Member;
+import teams.MemberImpl;
 
 import java.util.List;
 
@@ -21,12 +21,12 @@ public class ShowAllMembersCommand extends BaseCommand {
     }
 
     private String showMembersCommand() {
-        List<Member> members = getTaskManagementRepository().getMembers();
+        List<MemberImpl> members = getTaskManagementRepository().getMembers();
         if (members.isEmpty()) {
             throw new IllegalArgumentException(THERE_IS_NO_REGISTERED_MEMBERS);
         }
         StringBuilder stringBuilder = new StringBuilder();
-        for (Member member : members) {
+        for (MemberImpl member : members) {
             stringBuilder.append(member.toString());
         }
         return stringBuilder.toString();
