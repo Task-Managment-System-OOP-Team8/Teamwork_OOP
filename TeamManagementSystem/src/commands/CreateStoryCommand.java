@@ -5,7 +5,6 @@ import Utils.ValidationHelpers;
 import core.contracts.TaskManagementRepository;
 import tasks.models.StoryImpl;
 import tasks.models.enums.PriorityEnums;
-import tasks.models.enums.SeverityEnums;
 import tasks.models.enums.SizeEnums;
 
 import java.util.List;

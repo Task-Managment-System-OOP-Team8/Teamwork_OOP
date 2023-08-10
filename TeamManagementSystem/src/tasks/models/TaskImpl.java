@@ -4,7 +4,6 @@ import Utils.ValidationHelpers;
 import tasks.Comment;
 import tasks.History;
 import tasks.contracts.Task;
-import tasks.models.enums.StatusEnums;
 
 import java.util.ArrayList;
 
@@ -24,15 +23,12 @@ public abstract class TaskImpl implements Task {
     protected ArrayList<Comment> comments;
     protected ArrayList<History> history;
 
-    private StatusEnums status;
 
-    //TODO
     public TaskImpl(String title, String description) {
         this.id = totalId;
         totalId++;
         setTitle(title);
-        this.description = description;
-        setStatus(status);
+       setDescription(description);
         this.comments = new ArrayList<>();
         this.history = new ArrayList<>();
 
@@ -43,11 +39,11 @@ public abstract class TaskImpl implements Task {
         this.title = title;
     }
 
-    private void setStatus(StatusEnums status) {
-        this.status = status;
-    }
 
-    public abstract StatusEnums getStatus();
+    public void setDescription(String description) {
+        ValidationHelpers.ValidateIntRange(description.length(),DESCRIPTION_MIN_LENGTH,DESCRIPTION_MAX_LENGTH,INVALID_DESCRIPTION);
+        this.description = description;
+    }
 
     @Override
     public abstract String getAuthor();

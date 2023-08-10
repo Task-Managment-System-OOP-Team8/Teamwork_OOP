@@ -2,7 +2,7 @@ package tasks.models;
 
 import tasks.Comment;
 import tasks.contracts.Feedback;
-import tasks.models.enums.StatusEnums;
+import tasks.models.enums.FeedbackEnums;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class  FeedbackImpl extends TaskImpl implements Feedback {
             "Title must be between %d and %d symbols", TITLE_MIN_LENGTH, TITLE_MAX_LENGTH);
 
     private int rating;
-    private final StatusEnums status;
+    private FeedbackEnums status;
 
 
 
@@ -26,7 +26,7 @@ public class  FeedbackImpl extends TaskImpl implements Feedback {
     public FeedbackImpl(String title, String description, int rating) {
         super(title,description);
        setRating(rating);
-        this.status=StatusEnums.NEW;
+        this.status= FeedbackEnums.NEW;
 
     }
 
@@ -45,7 +45,7 @@ public class  FeedbackImpl extends TaskImpl implements Feedback {
     }
 
     @Override
-    public StatusEnums getStatus() {
+    public FeedbackEnums getStatus() {
         return status;
     }
 

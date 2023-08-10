@@ -1,11 +1,8 @@
 package tasks.models;
 
-import Utils.ValidationHelpers;
 import tasks.Comment;
 import tasks.contracts.Story;
-import tasks.models.enums.PriorityEnums;
-import tasks.models.enums.SizeEnums;
-import tasks.models.enums.StatusEnums;
+import tasks.models.enums.*;
 
 import java.util.ArrayList;
 
@@ -19,9 +16,9 @@ public class StoryImpl extends TaskImpl implements Story {
     public static final String INVALID_DESCRIPTION_LENGTH = String.format(
             "Description must be between %d and %d symbols", DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH);
 
-    private PriorityEnums priority;
-    private SizeEnums size;
-    private StatusEnums status;
+    private final PriorityEnums priority;
+    private final SizeEnums size;
+    private StoryEnums status;
     private String assignee;
 
 
@@ -29,15 +26,11 @@ public class StoryImpl extends TaskImpl implements Story {
         super(title,description);
         this.priority=priority;
         this.size=size;
-        this.status = StatusEnums.NOT_DONE;
+        this.status = StoryEnums.NOT_DONE;
        setAssignee(assignee);
 
     }
 
-    protected void setDescription(String description) {
-        ValidationHelpers.ValidateIntRange(description.length(), DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, INVALID_DESCRIPTION_LENGTH);
-        this.description = description;
-    }
     //TODO
     private void setAssignee(String assignee) {
         this.assignee = assignee;
@@ -58,9 +51,8 @@ public class StoryImpl extends TaskImpl implements Story {
         return assignee;
     }
 
-
     @Override
-    public StatusEnums getStatus() {
+    public StoryEnums getStatus() {
         return status;
     }
 

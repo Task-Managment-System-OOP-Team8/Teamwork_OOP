@@ -2,9 +2,7 @@ package tasks.models;
 
 import tasks.Comment;
 import tasks.contracts.Bug;
-import tasks.models.enums.StatusEnums;
-import tasks.models.enums.PriorityEnums;
-import tasks.models.enums.SeverityEnums;
+import tasks.models.enums.*;
 
 import java.util.ArrayList;
 
@@ -13,7 +11,7 @@ public class BugImpl extends TaskImpl implements Bug {
 
     private ArrayList<String> steps;
     private SeverityEnums severity;
-    private final StatusEnums status;
+    private  BugEnums status;
     private String assignee;
     private PriorityEnums priority;
 
@@ -24,7 +22,7 @@ public class BugImpl extends TaskImpl implements Bug {
         this.steps = new ArrayList<>();
         this.priority=priority;
         this.severity=severity;
-       this.status = StatusEnums.ACTIVE;
+       this.status = BugEnums.ACTIVE;
       setAssignee(assignee);
 
     }
@@ -43,12 +41,11 @@ public class BugImpl extends TaskImpl implements Bug {
         return severity;
     }
 
+
     @Override
-    public StatusEnums getStatus() {
+    public BugEnums getStatus() {
         return status;
     }
-
-
 
     @Override
     public PriorityEnums getPriority() {
