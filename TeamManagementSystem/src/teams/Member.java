@@ -48,4 +48,11 @@ public class Member implements Trackable {
     public void addActivity(String activity) {
         history.add(activity);
     }
+
+    @Override
+    public String toString() {
+        return String.format("Member name: %s", getName());
+    }
 }
+
+
