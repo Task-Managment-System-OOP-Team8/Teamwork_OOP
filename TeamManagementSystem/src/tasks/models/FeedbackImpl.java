@@ -6,7 +6,7 @@ import tasks.models.enums.StatusEnums;
 
 import java.util.ArrayList;
 
-public class FeedbackImpl extends TaskImpl implements Feedback {
+public class  FeedbackImpl extends TaskImpl implements Feedback {
 
     public static final int DESCRIPTION_MIN_LENGTH = 10;
     public static final int DESCRIPTION_MAX_LENGTH = 500;

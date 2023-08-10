@@ -22,6 +22,7 @@ import java.util.List;
 public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String THIS_MEMBER_ALREADY_EXISTS = "This member already exists.";
     public static final String THIS_TEAM_ALREADY_EXISTS = "This team already exists";
+    public static final String BOARD_ALREADY_EXISTS = "Board already exists";
     private int nextId;
     private List<MemberImpl> members;
     private List<Teams> teams;
@@ -52,6 +53,25 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
+    public BoardImpl addBoard(BoardImpl boardName) {
+        if (boards.contains(boardName)) {
+            throw new IllegalArgumentException(BOARD_ALREADY_EXISTS);
+        }
+        boards.add(boardName);
+        return boardName;
+    }
+
+    @Override
+    public BugImpl addBug(BugImpl bugTitle) {
+        return bugTitle;
+    }
+
+    @Override
+    public StoryImpl addStory(StoryImpl storyTitle) {
+        return storyTitle;
+    }
+
+    @Override
     public MemberImpl createMember(String name) {
         return new MemberImpl(name);
     }
@@ -70,22 +90,13 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
             return teamName;
     }
 
-//    @Override
-//    public Teams addTeam(Teams teamName) {
-//        if (teams.contains(teamName)) {
-//            throw new IllegalArgumentException(THIS_TEAM_ALREADY_EXISTS);
-//        }
-//        teams.add(teamName);
-//        return teamName;
-//    }
-
     @Override
     public BoardImpl createBoard(String boardName) {
         return new BoardImpl(boardName);
     }
 
     @Override
-    public Bug createBug( String title, String description, PriorityEnums priority,
+    public BugImpl createBug( String title, String description, PriorityEnums priority,
                          SeverityEnums severity, String assignee) {
         BugImpl bug = new BugImpl(title,description,priority,severity,assignee);
         this.bugs.add(bug);
@@ -93,7 +104,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public Story createStory(String title, String description,PriorityEnums priority,
+    public StoryImpl createStory(String title, String description,PriorityEnums priority,
                              SizeEnums size,String assignee) {
         StoryImpl story = new StoryImpl(title,description,priority,size,assignee);
         this.stories.add(story);
@@ -101,7 +112,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public Feedback createFeedback(String title, String description, int rating) {
+    public FeedbackImpl createFeedback(String title, String description, int rating) {
         FeedbackImpl feedback = new FeedbackImpl(title,description,rating);
         this.feedbacks.add(feedback);
         return feedback;

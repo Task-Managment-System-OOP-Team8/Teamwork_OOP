@@ -18,7 +18,7 @@ public class TaskManagementEngineImpl implements TaskManagementEngine {
     private static final String COMMENT_OPEN_SYMBOL = "{{";
     private static final String MAIN_SPLIT_SYMBOL = " ";
     private static final String COMMENT_CLOSE_SYMBOL = "}}";
-    private static final String REPORT_SEPARATOR = "";
+    private static final String REPORT_SEPARATOR = "==================" ;
 
 
     private final CommandFactoryImpl commandFactory;

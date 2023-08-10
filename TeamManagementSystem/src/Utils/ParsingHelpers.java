@@ -1,7 +1,5 @@
 package Utils;
 
-import java.util.Locale;
-
 public class ParsingHelpers {
     private static final String NO_SUCH_ENUM = "There is no %s in %ss.";
 

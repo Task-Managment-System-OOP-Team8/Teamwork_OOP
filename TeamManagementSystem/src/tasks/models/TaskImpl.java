@@ -19,18 +19,18 @@ public abstract class TaskImpl implements Task {
             "Description must be between %d and %d symbols", DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH);
     protected String title;
     private final int id;
-    public  static int totalId=0;
+    public static int totalId = 0;
     protected String description;
     protected ArrayList<Comment> comments;
     protected ArrayList<History> history;
 
     private StatusEnums status;
 
-//TODO
+    //TODO
     public TaskImpl(String title, String description) {
         this.id = totalId;
         totalId++;
-       setTitle(title);
+        setTitle(title);
         this.description = description;
         setStatus(status);
         this.comments = new ArrayList<>();
@@ -56,9 +56,9 @@ public abstract class TaskImpl implements Task {
         comments.add(new Comment(author, message));
     }
 
-public void addHistory(String input){
+    public void addHistory(String input) {
         history.add(new History(input));
-}
+    }
 
     @Override
     public abstract String getTitle();

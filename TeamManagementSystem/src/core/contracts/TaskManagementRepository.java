@@ -4,6 +4,9 @@ import tasks.Comment;
 import tasks.contracts.Bug;
 import tasks.contracts.Feedback;
 import tasks.contracts.Story;
+import tasks.models.BugImpl;
+import tasks.models.FeedbackImpl;
+import tasks.models.StoryImpl;
 import tasks.models.enums.*;
 import teams.BoardImpl;
 import teams.MemberImpl;
@@ -16,27 +19,33 @@ public interface TaskManagementRepository {
     List<MemberImpl> getMembers();
 
 
-    MemberImpl addMember(MemberImpl memberToAdd);
-
     MemberImpl createMember(String name);
 
     Teams createTeam(String name);
 
-    Teams addTeam(Teams teamName);
-
     BoardImpl createBoard(String boardName);
 
+    BugImpl createBug(String title, String description, PriorityEnums priority,
+                      SeverityEnums severity, String assignee);  //?
 
-   Bug createBug ( String title, String description, PriorityEnums priority,
-                  SeverityEnums severity, String assignee);  //?
+    StoryImpl createStory(String title, String description, PriorityEnums priority, SizeEnums size, String assignee);  //?
 
-    Story createStory(String title, String description,PriorityEnums priority,SizeEnums size,String assignee);  //?
-
-    Feedback createFeedback(String title, String description, int rating);
+    FeedbackImpl createFeedback(String title, String description, int rating);
 
     Comment createComment(String author, String message);
 
-   // History showAllHistory( ArrayList<String> history);
+    MemberImpl addMember(MemberImpl memberToAdd);
+
+    BoardImpl addBoard(BoardImpl boardName);
+
+    BugImpl addBug(BugImpl bugTitle);
+
+    StoryImpl addStory(StoryImpl storyTitle);
+
+    Teams addTeam(Teams teamName);
+
+
+    // History showAllHistory( ArrayList<String> history);
 
 
 }
