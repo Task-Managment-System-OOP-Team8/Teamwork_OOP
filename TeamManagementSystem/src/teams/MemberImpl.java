@@ -1,23 +1,21 @@
 package teams;
 
 import Utils.ValidationHelpers;
-import tasks.Comment;
 import tasks.contracts.Task;
-import teams.contracts.Member;
-
+import teams.contracts.Trackable;
 import java.util.ArrayList;
 
-public class MemberImpl implements Member {
+public class Member implements Trackable {
     public static final int MEMBER_NAME_MAX_LENGTH = 15;
     public static final int MEMBER_NAME_MIN_LENGTH = 5;
     public static final String INVALID_MEMBER_NAME = String.format(
-            "Member name must be between %d and %d symbols", MEMBER_NAME_MIN_LENGTH, MEMBER_NAME_MAX_LENGTH);
+            "Member name must be between %d and %d symbols",MEMBER_NAME_MIN_LENGTH,MEMBER_NAME_MAX_LENGTH);
     private String name;
     private ArrayList<Task> tasks;
     private ArrayList<String> history;
 
-    public MemberImpl(String name) {
-        setName(name);
+    public Member(String name) {
+        this.name = name;
         this.tasks = new ArrayList<>();
         this.history = new ArrayList<>();
     }
@@ -37,32 +35,24 @@ public class MemberImpl implements Member {
     public ArrayList<Task> getTasks() {
         return new ArrayList<>(tasks);
     }
-
+    //TODO
     @Override
     public ArrayList<String> getHistory() {
-        return  new ArrayList<>(history);
+        return new ArrayList<>(history);
     }
 
-    @Override
-    public void addTask(Task task) {
+    public void addTasks(Task task) {
         tasks.add(task);
+    }
 
+    public void addActivity(String activity) {
+        history.add(activity);
     }
 
     @Override
-    public void removeTask(Task task) {
-    tasks.remove(task);
+    public String toString() {
+        return String.format("Member name: %s", getName());
     }
-//TODO
-    @Override
-    public void addCommentToTask(Task taskToAddComment, Comment commentToAdd) {
-
-    }
-
-    @Override
-    public void removeCommentToTask(Task taskToRemoveComment,Comment commentToRemove) {
-
-    }
-
 }
+
 
