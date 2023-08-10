@@ -1,13 +1,16 @@
 package teams.contracts;
 
-import teams.Board;
-import teams.Member;
+import teams.BoardImpl;
+import teams.MemberImpl;
 
 import java.util.ArrayList;
 
 public interface Team {
 
     String getName();
-    ArrayList<Member> getMembers();
-    ArrayList<Board> getBoards();
+    ArrayList<MemberImpl> getMembers();
+    ArrayList<BoardImpl> getBoards();
+
+    void addMembers(MemberImpl member);
+    void addBoard(BoardImpl board);
 }

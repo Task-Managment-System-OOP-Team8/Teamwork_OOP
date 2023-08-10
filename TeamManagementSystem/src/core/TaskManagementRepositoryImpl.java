@@ -3,6 +3,7 @@ package core;
 import Utils.ListingHelpers;
 import core.contracts.TaskManagementRepository;
 import tasks.Comment;
+import tasks.History;
 import tasks.contracts.Bug;
 import tasks.contracts.Feedback;
 import tasks.contracts.Story;
@@ -12,8 +13,8 @@ import tasks.models.StoryImpl;
 import tasks.models.enums.PriorityEnums;
 import tasks.models.enums.SeverityEnums;
 import tasks.models.enums.SizeEnums;
-import teams.Board;
-import teams.Member;
+import teams.BoardImpl;
+import teams.MemberImpl;
 import teams.Teams;
 
 import java.util.ArrayList;
@@ -23,9 +24,9 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String THIS_MEMBER_ALREADY_EXISTS = "This member already exists.";
 
     private int nextId;
-    private List<Member> members;
+    private List<MemberImpl> members;
     private List<Teams> teams;
-    private List<Board> boards;
+    private List<BoardImpl> boards;
     private List<BugImpl> bugs;
     private List<StoryImpl> stories;
     private List<FeedbackImpl> feedbacks;
@@ -38,12 +39,12 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public List<Member> getMembers() {
+    public List<MemberImpl> getMembers() {
         return new ArrayList<>(members);
     }
 
     @Override
-    public Member addMember(Member memberToAdd) {
+    public MemberImpl addMember(MemberImpl memberToAdd) {
         if (members.contains(memberToAdd)) {
             throw new IllegalArgumentException(THIS_MEMBER_ALREADY_EXISTS);
         }
@@ -52,8 +53,8 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public Member createMember(String name) {
-        return new Member(name);
+    public MemberImpl createMember(String name) {
+        return new MemberImpl(name);
     }
 
     @Override
@@ -62,8 +63,8 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public Board createBoard(String boardName) {
-        return new Board(boardName);
+    public BoardImpl createBoard(String boardName) {
+        return new BoardImpl(boardName);
     }
 
     @Override
@@ -96,13 +97,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         return comment;
     }
 
-public String showAllHistory(ArrayList<String> history) {
-    if (history.isEmpty()){
-        return "There is no activity history";
-    }
 
-    return ListingHelpers.elements(history);
-}
     }
 
 

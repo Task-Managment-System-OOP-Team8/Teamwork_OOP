@@ -11,7 +11,7 @@ private String author;
 
     public Comment(String author, String comments) {
         setAuthor(author);
-        this.comments=comments;
+       setComments(comments);
     }
 
     @Override
@@ -23,8 +23,6 @@ private String author;
     public String getAuthor() {
         return author;
     }
-
-
 
     public void setComments(String comments) {
         this.comments = comments;
