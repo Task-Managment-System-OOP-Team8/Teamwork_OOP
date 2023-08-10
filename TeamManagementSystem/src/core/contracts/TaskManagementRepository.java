@@ -37,7 +37,7 @@ public interface TaskManagementRepository {
 
     Comment createComment(String author, String message);
 
-    History showAllHistory( ArrayList<String> history);
+   // History showAllHistory( ArrayList<String> history);
 
 
 }

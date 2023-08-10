@@ -1,8 +1,8 @@
 package core;
 
+import Utils.ListingHelpers;
 import core.contracts.TaskManagementRepository;
 import tasks.Comment;
-import tasks.History;
 import tasks.contracts.Bug;
 import tasks.contracts.Feedback;
 import tasks.contracts.Story;
@@ -12,11 +12,9 @@ import tasks.models.StoryImpl;
 import tasks.models.enums.PriorityEnums;
 import tasks.models.enums.SeverityEnums;
 import tasks.models.enums.SizeEnums;
-import tasks.models.enums.StatusEnums;
 import teams.Board;
 import teams.Member;
 import teams.Teams;
-import teams.contracts.Team;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,10 +95,15 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         this.comments.add(comment);
         return comment;
     }
-//TODO
-    @Override
-    public History showAllHistory(ArrayList<String> history) {
-        return null;
+
+public String showAllHistory(ArrayList<String> history) {
+    if (history.isEmpty()){
+        return "There is no activity history";
     }
 
+    return ListingHelpers.elements(history);
 }
+    }
+
+
+
