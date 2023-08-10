@@ -22,6 +22,7 @@ public interface TaskManagementRepository {
 
     Teams createTeam(String name);
 
+    Teams addTeam(Teams teamName);
 
     BoardImpl createBoard(String boardName);
 

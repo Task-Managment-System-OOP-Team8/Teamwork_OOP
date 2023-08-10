@@ -3,7 +3,6 @@ package core;
 import Utils.ListingHelpers;
 import core.contracts.TaskManagementRepository;
 import tasks.Comment;
-import tasks.History;
 import tasks.contracts.Bug;
 import tasks.contracts.Feedback;
 import tasks.contracts.Story;
@@ -61,6 +60,24 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public Teams createTeam(String name) {
         return new Teams(name);
     }
+
+    @Override
+    public Teams addTeam(Teams teamName) {
+            if (teams.contains(teamName)) {
+                throw new IllegalArgumentException(THIS_TEAM_ALREADY_EXISTS);
+            }
+            teams.add(teamName);
+            return teamName;
+    }
+
+//    @Override
+//    public Teams addTeam(Teams teamName) {
+//        if (teams.contains(teamName)) {
+//            throw new IllegalArgumentException(THIS_TEAM_ALREADY_EXISTS);
+//        }
+//        teams.add(teamName);
+//        return teamName;
+//    }
 
     @Override
     public BoardImpl createBoard(String boardName) {
