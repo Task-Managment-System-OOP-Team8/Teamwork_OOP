@@ -30,8 +30,9 @@ public abstract class TaskImpl implements Task {
     public TaskImpl(String title, String description) {
         this.id = totalId;
         totalId++;
-        this.title = title;
+       setTitle(title);
         this.description = description;
+        setStatus(status);
         this.comments = new ArrayList<>();
         this.history = new ArrayList<>();
 
@@ -55,9 +56,9 @@ public abstract class TaskImpl implements Task {
         comments.add(new Comment(author, message));
     }
 
-    public void addHistoryEntry(History input) {
-        history.add(input);
-    }
+public void addHistory(String input){
+        history.add(new History(input));
+}
 
     @Override
     public abstract String getTitle();

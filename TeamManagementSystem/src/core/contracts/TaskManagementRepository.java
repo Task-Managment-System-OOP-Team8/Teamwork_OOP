@@ -1,32 +1,30 @@
 package core.contracts;
 
 import tasks.Comment;
-import tasks.History;
 import tasks.contracts.Bug;
 import tasks.contracts.Feedback;
 import tasks.contracts.Story;
 import tasks.models.enums.*;
-import teams.Board;
-import teams.Member;
+import teams.BoardImpl;
+import teams.MemberImpl;
 import teams.Teams;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface TaskManagementRepository {
 
-    List<Member> getMembers();
+    List<MemberImpl> getMembers();
 
 
-    Member addMember(Member memberToAdd);
+    MemberImpl addMember(MemberImpl memberToAdd);
 
-    Member createMember(String name);
+    MemberImpl createMember(String name);
 
     Teams createTeam(String name);
 
     Teams addTeam(Teams teamName);
 
-    Board createBoard(String boardName);
+    BoardImpl createBoard(String boardName);
 
 
    Bug createBug ( String title, String description, PriorityEnums priority,

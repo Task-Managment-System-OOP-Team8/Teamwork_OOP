@@ -8,8 +8,8 @@ public class Teams implements teams.contracts.Team {
     public static final int NAME_MIN_LENGTH = 5;
     public static final String INVALID_TEAM_NAME = String.format("Team name must be between %d and %d symbols", NAME_MIN_LENGTH, NAME_MAX_LENGTH);
     private String name;
-    private ArrayList<Member> members;
-    private ArrayList<Board> boards;
+    private ArrayList<MemberImpl> members;
+    private ArrayList<BoardImpl> boards;
 
     public Teams(String name) {
         setName(name);
@@ -23,12 +23,12 @@ public class Teams implements teams.contracts.Team {
     }
 
     @Override
-    public ArrayList<Member> getMembers() {
+    public ArrayList<MemberImpl> getMembers() {
         return new ArrayList<>(members);
     }
 
     @Override
-    public ArrayList<Board> getBoards() {
+    public ArrayList<BoardImpl> getBoards() {
         return new ArrayList<>(boards);
     }
 
@@ -38,16 +38,13 @@ public class Teams implements teams.contracts.Team {
         this.name = name;
     }
 
-    private void addMembers(Member member) {
+    public void addMembers(MemberImpl member) {
         members.add(member);
     }
 
-    private void addBoard(Board board) {
+    public void addBoard(BoardImpl board) {
         boards.add(board);
     }
 
-//    public void allTeamNames(String teamName) {
-//        ArrayList<String> teams = new ArrayList<String>();
-//        teams.add(teamName);
 
 }

@@ -48,20 +48,17 @@ public class BugImpl extends TaskImpl implements Bug {
         return status;
     }
 
-    @Override
-    public String getAssignee() {
-        return null;
-    }
+
 
     @Override
     public PriorityEnums getPriority() {
         return priority;
     }
 
-//    @Override
-//    public String getAssignee() {
-//        return assignee;
-//    }
+    @Override
+    public String getAssignee() {
+        return assignee;
+    }
 
 
     @Override

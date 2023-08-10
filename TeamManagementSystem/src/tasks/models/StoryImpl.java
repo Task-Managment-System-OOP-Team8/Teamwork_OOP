@@ -58,6 +58,7 @@ public class StoryImpl extends TaskImpl implements Story {
         return assignee;
     }
 
+
     @Override
     public StatusEnums getStatus() {
         return status;
