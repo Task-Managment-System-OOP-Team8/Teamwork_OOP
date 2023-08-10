@@ -2,7 +2,7 @@ package commands;
 
 import Utils.ValidationHelpers;
 import core.contracts.TaskManagementRepository;
-import teams.Member;
+import teams.MemberImpl;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class CreateMemberCommand extends BaseCommand{
     }
 
     private String registerUser(String username) {
-        Member member = getTaskManagementRepository().createMember(username);
+        MemberImpl member = getTaskManagementRepository().createMember(username);
         getTaskManagementRepository().addMember(member);
         return String.format(MEMBER_REGISTERED, username);
     }

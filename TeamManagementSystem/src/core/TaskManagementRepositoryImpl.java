@@ -21,7 +21,7 @@ import java.util.List;
 
 public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String THIS_MEMBER_ALREADY_EXISTS = "This member already exists.";
-
+    public static final String THIS_TEAM_ALREADY_EXISTS = "This team already exists";
     private int nextId;
     private List<MemberImpl> members;
     private List<Teams> teams;
