@@ -21,6 +21,7 @@ import java.util.List;
 
 public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String THIS_MEMBER_ALREADY_EXISTS = "This member already exists.";
+    public static final String THIS_TEAM_ALREADY_EXISTS = "This team already exists";
 
     private int nextId;
     private List<Member> members;
@@ -60,6 +61,24 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public Teams createTeam(String name) {
         return new Teams(name);
     }
+
+    @Override
+    public Teams addTeam(Teams teamName) {
+            if (teams.contains(teamName)) {
+                throw new IllegalArgumentException(THIS_TEAM_ALREADY_EXISTS);
+            }
+            teams.add(teamName);
+            return teamName;
+    }
+
+//    @Override
+//    public Teams addTeam(Teams teamName) {
+//        if (teams.contains(teamName)) {
+//            throw new IllegalArgumentException(THIS_TEAM_ALREADY_EXISTS);
+//        }
+//        teams.add(teamName);
+//        return teamName;
+//    }
 
     @Override
     public Board createBoard(String boardName) {
