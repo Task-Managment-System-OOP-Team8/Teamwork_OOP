@@ -40,6 +40,8 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new AddMemberToTeamCommand(taskManagementRepository);
             case SHOWALLTEAMBOARDS:
                 return new ShowAllTeamBoardsCommand(taskManagementRepository);
+            case SHOWALLMEMBERS:
+                return new ShowAllMembersCommand(taskManagementRepository);
             default:
                 throw new IllegalArgumentException(String.format(INVALID_COMMAND,commmandType));
 
