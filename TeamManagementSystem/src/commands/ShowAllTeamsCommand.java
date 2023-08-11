@@ -12,7 +12,7 @@ public class ShowAllTeamsCommand extends BaseCommand{
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 0;
     public static final String THERE_IS_NO_REGISTERED_TEAMS = "There is no registered teams";
 
-    protected ShowAllTeamsCommand(TaskManagementRepository taskManagementRepository) {
+    public ShowAllTeamsCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
 

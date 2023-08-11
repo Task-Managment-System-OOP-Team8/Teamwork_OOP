@@ -12,7 +12,7 @@ import java.util.List;
 public class CreateStoryCommand extends BaseCommand {
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 5;
 
-    protected CreateStoryCommand(TaskManagementRepository taskManagementRepository) {
+    public CreateStoryCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
 

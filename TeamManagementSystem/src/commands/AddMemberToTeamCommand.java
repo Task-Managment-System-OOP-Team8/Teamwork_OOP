@@ -10,7 +10,7 @@ public class AddMemberToTeamCommand extends BaseCommand {
 
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
 
-    protected AddMemberToTeamCommand(TaskManagementRepository taskManagementRepository) {
+    public AddMemberToTeamCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
 

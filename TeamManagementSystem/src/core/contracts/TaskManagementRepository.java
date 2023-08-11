@@ -54,6 +54,10 @@ public interface TaskManagementRepository {
 
     FeedbackImpl addFeedback(FeedbackImpl feedbackTitle);
 
+    MemberImpl findMemberByUsername(String username);
+
+    BoardImpl findBoardByName(String boardName);
+
 
     // History showAllHistory( ArrayList<String> history);
 

@@ -12,7 +12,7 @@ public enum CommmandType {
     SHOWALLMEMBERS, // ??
     SHOWALLTEAMS,// done
     SHOWTEAMSACTIVITY, // ??
-    SHOWALLMEMBERSTEAM, // done
+    SHOWALLMEMBERSTEAM, //??
     SHOWALLTEAMBOARDS, // done
     SHOWBOARDSACTIVITY,
     //TODO

@@ -9,7 +9,7 @@ public class CreateMemberCommand extends BaseCommand{
 
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
     private final static String MEMBER_REGISTERED = "Member %s registered successfully!";
-    protected CreateMemberCommand(TaskManagementRepository taskManagementRepository) {
+    public CreateMemberCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
 

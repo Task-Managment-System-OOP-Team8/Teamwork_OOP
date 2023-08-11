@@ -25,6 +25,8 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String THIS_TEAM_ALREADY_EXISTS = "This team already exists";
     public static final String BOARD_ALREADY_EXISTS = "Board already exists";
     public static final String FEEDBACK_ALREADY_EXISTS = "Feedback already exists";
+    public static final String NO_VALID_USERNAME = "There is no member with username: %s";
+    public static final String NO_VALID_BOARD_NAME = "There is no board with name: %s";
     private int nextId;
     private List<MemberImpl> members;
     private List<Teams> teams;
@@ -38,6 +40,13 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     public TaskManagementRepositoryImpl() {
         nextId = 0;
+        this.bugs = new ArrayList<>();
+        this.stories = new ArrayList<>();
+        this.feedbacks = new ArrayList<>();
+        this.comments = new ArrayList<>();
+        this.boards = new ArrayList<>();
+        this.members = new ArrayList<>();
+        this.teams = new ArrayList<>();
     }
 
     @Override
@@ -119,6 +128,26 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         }
         feedbacks.add(feedbackTitle);
         return feedbackTitle;
+    }
+
+    @Override
+    public MemberImpl findMemberByUsername(String username) {
+        for (MemberImpl member : members) {
+            if (member.getName().equalsIgnoreCase(username)){
+                return member;
+            }
+        }
+      throw new IllegalArgumentException(String.format(NO_VALID_USERNAME,username));
+    }
+
+    @Override
+    public BoardImpl findBoardByName(String boardName) {
+        for (BoardImpl board : boards){
+            if (board.getName().equalsIgnoreCase(boardName)){
+                return board;
+            }
+        }
+    throw new IllegalArgumentException(String.format(NO_VALID_BOARD_NAME,boardName));
     }
 
     @Override

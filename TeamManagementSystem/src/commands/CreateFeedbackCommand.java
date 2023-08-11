@@ -10,7 +10,7 @@ public class CreateFeedbackCommand extends BaseCommand {
     public static final String FEEDBACK_S_CREATED_SUCCESSFULLY = "Feedback %s created successfully";
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 3;
 
-    protected CreateFeedbackCommand(TaskManagementRepository taskManagementRepository) {
+    public CreateFeedbackCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
 

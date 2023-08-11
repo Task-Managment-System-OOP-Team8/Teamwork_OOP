@@ -8,7 +8,7 @@ import java.util.List;
 public class CreateBoardCommand extends BaseCommand {
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
 
-    protected CreateBoardCommand(TaskManagementRepository taskManagementRepository) {
+    public CreateBoardCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
 
