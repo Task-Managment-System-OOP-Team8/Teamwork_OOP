@@ -18,6 +18,8 @@ public interface TaskManagementRepository {
 
     List<MemberImpl> getMembers();
 
+    List<Teams> getTeams();
+
 
     MemberImpl createMember(String name);
 
@@ -43,6 +45,8 @@ public interface TaskManagementRepository {
     StoryImpl addStory(StoryImpl storyTitle);
 
     Teams addTeam(Teams teamName);
+
+    FeedbackImpl addFeedback(FeedbackImpl feedbackTitle);
 
 
     // History showAllHistory( ArrayList<String> history);

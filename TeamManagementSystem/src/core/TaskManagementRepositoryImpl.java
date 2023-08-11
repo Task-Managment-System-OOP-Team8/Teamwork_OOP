@@ -23,6 +23,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String THIS_MEMBER_ALREADY_EXISTS = "This member already exists.";
     public static final String THIS_TEAM_ALREADY_EXISTS = "This team already exists";
     public static final String BOARD_ALREADY_EXISTS = "Board already exists";
+    public static final String FEEDBACK_ALREADY_EXISTS = "Feedback already exists";
     private int nextId;
     private List<MemberImpl> members;
     private List<Teams> teams;
@@ -41,6 +42,11 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     @Override
     public List<MemberImpl> getMembers() {
         return new ArrayList<>(members);
+    }
+
+    @Override
+    public List<Teams> getTeams() {
+        return new ArrayList<>(teams);
     }
 
     @Override
@@ -88,6 +94,15 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
             }
             teams.add(teamName);
             return teamName;
+    }
+
+    @Override
+    public FeedbackImpl addFeedback(FeedbackImpl feedbackTitle) {
+        if (feedbacks.contains(feedbackTitle)) {
+            throw new IllegalArgumentException(FEEDBACK_ALREADY_EXISTS);
+        }
+        feedbacks.add(feedbackTitle);
+        return feedbackTitle;
     }
 
     @Override

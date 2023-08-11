@@ -1,11 +1,13 @@
 package commands;
 
 import core.contracts.TaskManagementRepository;
-import tasks.History;
+import teams.MemberImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShowMembersHistoryCommand extends BaseCommand {
+    public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 0;
 
 
     protected ShowMembersHistoryCommand(TaskManagementRepository taskManagementRepository) {
