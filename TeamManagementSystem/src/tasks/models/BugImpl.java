@@ -89,4 +89,15 @@ public class BugImpl extends TaskImpl implements Bug {
     private void setPriority(PriorityEnums priority) {
         this.priority = priority;
     }
+//TODO
+    @Override
+    public String getAsString() {
+
+        return String.format("BUG:\n" +
+                "Title: %s\n" +
+                "Description %s\n" +
+                "Priority: %s\n" +
+                "Severity: %s\n" +
+                "Assignee: %s\n", title,description,priority,severity,assignee);
+    }
 }

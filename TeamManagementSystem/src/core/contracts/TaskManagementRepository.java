@@ -1,6 +1,7 @@
 package core.contracts;
 
 import tasks.Comment;
+import tasks.History;
 import tasks.contracts.Bug;
 import tasks.contracts.Feedback;
 import tasks.contracts.Story;
@@ -17,6 +18,12 @@ import java.util.List;
 public interface TaskManagementRepository {
 
     List<MemberImpl> getMembers();
+
+    List<Teams> getTeams();
+
+    List<BoardImpl> getBoards();
+
+    List<History> getHistory();
 
 
     MemberImpl createMember(String name);
@@ -35,6 +42,7 @@ public interface TaskManagementRepository {
     Comment createComment(String author, String message);
 
     MemberImpl addMember(MemberImpl memberToAdd);
+    History addActivity(History activityToAdd);
 
     BoardImpl addBoard(BoardImpl boardName);
 
@@ -43,6 +51,8 @@ public interface TaskManagementRepository {
     StoryImpl addStory(StoryImpl storyTitle);
 
     Teams addTeam(Teams teamName);
+
+    FeedbackImpl addFeedback(FeedbackImpl feedbackTitle);
 
 
     // History showAllHistory( ArrayList<String> history);

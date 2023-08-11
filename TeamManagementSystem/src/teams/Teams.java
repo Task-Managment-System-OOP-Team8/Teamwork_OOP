@@ -47,4 +47,8 @@ public class Teams implements teams.contracts.Team {
     }
 
 
+    @Override
+    public String getAsString() {
+        return String.format("%s",getName());
+    }
 }

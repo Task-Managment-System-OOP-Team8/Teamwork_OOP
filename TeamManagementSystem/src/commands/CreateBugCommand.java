@@ -9,9 +9,10 @@ import tasks.models.enums.SeverityEnums;
 import java.util.List;
 
 public class CreateBugCommand extends BaseCommand {
+    public static final String BUG_S_CREATED_SUCCESSFULLY = "Bug %s created successfully";
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 5;
 
-    protected CreateBugCommand(TaskManagementRepository taskManagementRepository) {
+    public CreateBugCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
     @Override
@@ -30,6 +31,7 @@ public class CreateBugCommand extends BaseCommand {
                              SeverityEnums severity, String assignee) {
         BugImpl bug = getTaskManagementRepository().createBug(bugTitle, description, priority, severity, assignee);
         getTaskManagementRepository().addBug(bug);
-        return String.format("Bug %s created successfully", bugTitle);
+        return String.format(BUG_S_CREATED_SUCCESSFULLY, bugTitle);
     }
 }
+

@@ -76,4 +76,9 @@ public class StoryImpl extends TaskImpl implements Story {
     public SizeEnums getSize() {
         return size;
     }
+//TODO
+    @Override
+    public String getAsString() {
+        return null;
+    }
 }

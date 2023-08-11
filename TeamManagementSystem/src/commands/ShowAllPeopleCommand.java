@@ -3,13 +3,14 @@ package commands;
 import Utils.ValidationHelpers;
 import core.contracts.TaskManagementRepository;
 import teams.MemberImpl;
+
 import java.util.List;
 
-public class ShowAllMembersCommand extends BaseCommand {
+public class ShowAllPeopleCommand extends BaseCommand {
     public static final String THERE_IS_NO_REGISTERED_MEMBERS = "There is no registered members";
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 0;
 
-    protected ShowAllMembersCommand(TaskManagementRepository taskManagementRepository) {
+    protected ShowAllPeopleCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
 

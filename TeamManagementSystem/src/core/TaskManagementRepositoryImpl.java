@@ -3,6 +3,7 @@ package core;
 import Utils.ListingHelpers;
 import core.contracts.TaskManagementRepository;
 import tasks.Comment;
+import tasks.History;
 import tasks.contracts.Bug;
 import tasks.contracts.Feedback;
 import tasks.contracts.Story;
@@ -23,6 +24,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String THIS_MEMBER_ALREADY_EXISTS = "This member already exists.";
     public static final String THIS_TEAM_ALREADY_EXISTS = "This team already exists";
     public static final String BOARD_ALREADY_EXISTS = "Board already exists";
+    public static final String FEEDBACK_ALREADY_EXISTS = "Feedback already exists";
     private int nextId;
     private List<MemberImpl> members;
     private List<Teams> teams;
@@ -44,12 +46,32 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
+    public List<Teams> getTeams() {
+        return new ArrayList<>(teams);
+    }
+
+    @Override
+    public List<BoardImpl> getBoards() {
+        return new ArrayList<>(boards);
+    }
+
+    @Override
+    public List<History> getHistory() {
+        return null;
+    }
+
+    @Override
     public MemberImpl addMember(MemberImpl memberToAdd) {
         if (members.contains(memberToAdd)) {
             throw new IllegalArgumentException(THIS_MEMBER_ALREADY_EXISTS);
         }
         members.add(memberToAdd);
         return memberToAdd;
+    }
+
+    @Override
+    public History addActivity(History activityToAdd) {
+        return null;
     }
 
     @Override
@@ -88,6 +110,15 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
             }
             teams.add(teamName);
             return teamName;
+    }
+
+    @Override
+    public FeedbackImpl addFeedback(FeedbackImpl feedbackTitle) {
+        if (feedbacks.contains(feedbackTitle)) {
+            throw new IllegalArgumentException(FEEDBACK_ALREADY_EXISTS);
+        }
+        feedbacks.add(feedbackTitle);
+        return feedbackTitle;
     }
 
     @Override
