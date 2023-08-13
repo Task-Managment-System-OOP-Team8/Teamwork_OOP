@@ -1,12 +1,9 @@
 package core;
 
-import Utils.ListingHelpers;
 import core.contracts.TaskManagementRepository;
 import tasks.Comment;
 import tasks.History;
-import tasks.contracts.Bug;
-import tasks.contracts.Feedback;
-import tasks.contracts.Story;
+import tasks.contracts.Task;
 import tasks.models.BugImpl;
 import tasks.models.FeedbackImpl;
 import tasks.models.StoryImpl;
@@ -16,7 +13,7 @@ import tasks.models.enums.SeverityEnums;
 import tasks.models.enums.SizeEnums;
 import teams.BoardImpl;
 import teams.MemberImpl;
-import teams.Teams;
+import teams.TeamImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +27,14 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String NO_VALID_BOARD_NAME = "There is no board with name: %s";
     private int nextId;
     private List<MemberImpl> members;
-    private List<Teams> teams;
+    private List<TeamImpl> teams;
     private List<BoardImpl> boards;
     private List<BugImpl> bugs;
     private List<StoryImpl> stories;
     private List<FeedbackImpl> feedbacks;
     private List<Comment> comments;
 
-    private List <TaskImpl> task;
+    private List<TaskImpl> task;
 
     public TaskManagementRepositoryImpl() {
         nextId = 1;
@@ -57,7 +54,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public List<Teams> getTeams() {
+    public List<TeamImpl> getTeams() {
         return new ArrayList<>(teams);
     }
 
@@ -110,17 +107,17 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public Teams createTeam(String name) {
-        return new Teams(name);
+    public TeamImpl createTeam(String name) {
+        return new TeamImpl(name);
     }
 
     @Override
-    public Teams addTeam(Teams teamName) {
-            if (teams.contains(teamName)) {
-                throw new IllegalArgumentException(THIS_TEAM_ALREADY_EXISTS);
-            }
-            teams.add(teamName);
-            return teamName;
+    public TeamImpl addTeam(TeamImpl teamName) {
+        if (teams.contains(teamName)) {
+            throw new IllegalArgumentException(THIS_TEAM_ALREADY_EXISTS);
+        }
+        teams.add(teamName);
+        return teamName;
     }
 
     @Override
@@ -135,21 +132,21 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     @Override
     public MemberImpl findMemberByUsername(String username) {
         for (MemberImpl member : members) {
-            if (member.getName().equalsIgnoreCase(username)){
+            if (member.getName().equalsIgnoreCase(username)) {
                 return member;
             }
         }
-      throw new IllegalArgumentException(String.format(NO_VALID_USERNAME,username));
+        throw new IllegalArgumentException(String.format(NO_VALID_USERNAME, username));
     }
 
     @Override
     public BoardImpl findBoardByName(String boardName) {
-        for (BoardImpl board : boards){
-            if (board.getName().equalsIgnoreCase(boardName)){
+        for (BoardImpl board : boards) {
+            if (board.getName().equalsIgnoreCase(boardName)) {
                 return board;
             }
         }
-    throw new IllegalArgumentException(String.format(NO_VALID_BOARD_NAME,boardName));
+        throw new IllegalArgumentException(String.format(NO_VALID_BOARD_NAME, boardName));
     }
 
     @Override
@@ -158,53 +155,68 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public BugImpl createBug( String title, String description, PriorityEnums priority,
-                         SeverityEnums severity, String assignee) {
-        BugImpl bug = new BugImpl(title,description,priority,severity,assignee);
+    public BugImpl createBug(String title, String description, PriorityEnums priority,
+                             SeverityEnums severity, String assignee) {
+        BugImpl bug = new BugImpl(title, description, priority, severity, assignee);
         this.bugs.add(bug);
         return bug;
     }
 
     @Override
-    public StoryImpl createStory(String title, String description,PriorityEnums priority,
-                             SizeEnums size,String assignee) {
-        StoryImpl story = new StoryImpl(title,description,priority,size,assignee);
+    public StoryImpl createStory(String title, String description, PriorityEnums priority,
+                                 SizeEnums size, String assignee) {
+        StoryImpl story = new StoryImpl(title, description, priority, size, assignee);
         this.stories.add(story);
         return story;
     }
 
     @Override
     public FeedbackImpl createFeedback(String title, String description, int rating) {
-        FeedbackImpl feedback = new FeedbackImpl(title,description,rating);
+        FeedbackImpl feedback = new FeedbackImpl(title, description, rating);
         this.feedbacks.add(feedback);
         return feedback;
     }
 
     @Override
     public Comment createComment(String author, String message) {
-        Comment comment = new Comment(author,message);
+        Comment comment = new Comment(author, message);
         this.comments.add(comment);
         return comment;
     }
-@Override
+
+    @Override
     public List<BugImpl> getBugs() {
         return new ArrayList<>(bugs);
     }
+
     @Override
-    public List<StoryImpl> getStories(){
+    public List<StoryImpl> getStories() {
         return new ArrayList<>(stories);
     }
-@Override
-    public List<FeedbackImpl> getFeedbacks(){
+
+    @Override
+    public List<FeedbackImpl> getFeedbacks() {
         return new ArrayList<>(feedbacks);
     }
+
     //create history
-@Override
-    public List<TaskImpl> getTasks(){
+    @Override
+    public List<TaskImpl> getTasks() {
         return new ArrayList<>(task);
     }
 
+
+    @Override
+    public TaskImpl findTaskByName(String taskName) {
+        for (TaskImpl task : getTasks()) {
+            if (task.getTitle().equalsIgnoreCase(taskName)) {
+                return task;
+            }
+
+            throw new IllegalArgumentException(String.format("Task with name %s doesn't exist.", taskName));
+        }
+
+        return null;
     }
 
-
-
+}

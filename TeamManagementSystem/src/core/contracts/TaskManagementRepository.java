@@ -2,9 +2,6 @@ package core.contracts;
 
 import tasks.Comment;
 import tasks.History;
-import tasks.contracts.Bug;
-import tasks.contracts.Feedback;
-import tasks.contracts.Story;
 import tasks.models.BugImpl;
 import tasks.models.FeedbackImpl;
 import tasks.models.StoryImpl;
@@ -12,7 +9,7 @@ import tasks.models.TaskImpl;
 import tasks.models.enums.*;
 import teams.BoardImpl;
 import teams.MemberImpl;
-import teams.Teams;
+import teams.TeamImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +18,7 @@ public interface TaskManagementRepository {
 
     List<MemberImpl> getMembers();
 
-    List<Teams> getTeams();
+    List<TeamImpl> getTeams();
 
     List<BoardImpl> getBoards();
 
@@ -30,7 +27,7 @@ public interface TaskManagementRepository {
 
     MemberImpl createMember(String name);
 
-    Teams createTeam(String name);
+    TeamImpl createTeam(String name);
 
     BoardImpl createBoard(String boardName);
 
@@ -52,7 +49,7 @@ public interface TaskManagementRepository {
 
     StoryImpl addStory(StoryImpl storyTitle);
 
-    Teams addTeam(Teams teamName);
+    TeamImpl addTeam(TeamImpl teamName);
 
     FeedbackImpl addFeedback(FeedbackImpl feedbackTitle);
 
@@ -66,6 +63,10 @@ public interface TaskManagementRepository {
 
     List<FeedbackImpl> getFeedbacks();
     List<TaskImpl> getTasks();
+
+   TaskImpl findTaskByName(String taskName);
+
+
     // History showAllHistory( ArrayList<String> history);
 
 
