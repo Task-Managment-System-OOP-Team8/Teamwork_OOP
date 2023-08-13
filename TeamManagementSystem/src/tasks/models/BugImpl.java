@@ -58,13 +58,13 @@ public class BugImpl extends TaskImpl implements Bug {
     }
 
 
-    @Override
+
     public ArrayList<Comment> getComments() {
         return new ArrayList<>(comments);
     }
 
     //TODO
-    @Override
+
     public String getAuthor() {
         return null;
     }

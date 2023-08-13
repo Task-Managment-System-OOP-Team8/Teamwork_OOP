@@ -36,7 +36,7 @@ public class StoryImpl extends TaskImpl implements Story {
         this.assignee = assignee;
     }
 
-    @Override
+
     public ArrayList<Comment> getComments() {
         return new ArrayList<>(comments);
     }
@@ -57,7 +57,7 @@ public class StoryImpl extends TaskImpl implements Story {
     }
 
     //TODO
-    @Override
+
     public String getAuthor() {
         return null;
     }

@@ -6,6 +6,10 @@ import commands.Enums.CommmandType;
 import commands.contracts.Command;
 import core.contracts.CommandFactory;
 import core.contracts.TaskManagementRepository;
+import listing.ListBugCommand;
+import listing.ListFeedbackCommand;
+import listing.ListStoryCommand;
+import listing.ListTaskCommand;
 
 
 public class CommandFactoryImpl implements CommandFactory {
@@ -42,6 +46,14 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ShowAllTeamBoardsCommand(taskManagementRepository);
             case SHOWALLMEMBERS:
                 return new ShowAllMembersCommand(taskManagementRepository);
+            case LISTBUG:
+                return new ListBugCommand(taskManagementRepository);
+            case LISTSTORIES:
+                return new ListStoryCommand(taskManagementRepository);
+            case LISTFEEDBACKS:
+                return new ListFeedbackCommand(taskManagementRepository);
+            case LISTTASKS:
+                return new ListTaskCommand(taskManagementRepository);
             default:
                 throw new IllegalArgumentException(String.format(INVALID_COMMAND,commmandType));
 

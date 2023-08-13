@@ -10,6 +10,7 @@ import tasks.contracts.Story;
 import tasks.models.BugImpl;
 import tasks.models.FeedbackImpl;
 import tasks.models.StoryImpl;
+import tasks.models.TaskImpl;
 import tasks.models.enums.PriorityEnums;
 import tasks.models.enums.SeverityEnums;
 import tasks.models.enums.SizeEnums;
@@ -36,10 +37,10 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     private List<FeedbackImpl> feedbacks;
     private List<Comment> comments;
 
-    //List <Task> task;
+    private List <TaskImpl> task;
 
     public TaskManagementRepositoryImpl() {
-        nextId = 0;
+        nextId = 1;
         this.bugs = new ArrayList<>();
         this.stories = new ArrayList<>();
         this.feedbacks = new ArrayList<>();
@@ -47,6 +48,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         this.boards = new ArrayList<>();
         this.members = new ArrayList<>();
         this.teams = new ArrayList<>();
+        this.task = new ArrayList<>();
     }
 
     @Override
@@ -184,7 +186,23 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         this.comments.add(comment);
         return comment;
     }
-
+@Override
+    public List<BugImpl> getBugs() {
+        return new ArrayList<>(bugs);
+    }
+    @Override
+    public List<StoryImpl> getStories(){
+        return new ArrayList<>(stories);
+    }
+@Override
+    public List<FeedbackImpl> getFeedbacks(){
+        return new ArrayList<>(feedbacks);
+    }
+    //create history
+@Override
+    public List<TaskImpl> getTasks(){
+        return new ArrayList<>(task);
+    }
 
     }
 

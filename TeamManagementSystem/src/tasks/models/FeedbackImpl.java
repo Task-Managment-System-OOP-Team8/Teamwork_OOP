@@ -34,7 +34,7 @@ public class  FeedbackImpl extends TaskImpl implements Feedback {
         this.rating = rating;
     }
 //TODO
-    @Override
+
     public ArrayList<Comment> getComments() {
         return new ArrayList<>(comments);
     }
@@ -50,7 +50,7 @@ public class  FeedbackImpl extends TaskImpl implements Feedback {
     }
 
     //TODO
-    @Override
+
     public String getAuthor() {
         return null;
     }

@@ -8,11 +8,13 @@ import tasks.contracts.Story;
 import tasks.models.BugImpl;
 import tasks.models.FeedbackImpl;
 import tasks.models.StoryImpl;
+import tasks.models.TaskImpl;
 import tasks.models.enums.*;
 import teams.BoardImpl;
 import teams.MemberImpl;
 import teams.Teams;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface TaskManagementRepository {
@@ -58,7 +60,12 @@ public interface TaskManagementRepository {
 
     BoardImpl findBoardByName(String boardName);
 
+    List<BugImpl> getBugs();
 
+    List<StoryImpl> getStories ();
+
+    List<FeedbackImpl> getFeedbacks();
+    List<TaskImpl> getTasks();
     // History showAllHistory( ArrayList<String> history);
 
 
