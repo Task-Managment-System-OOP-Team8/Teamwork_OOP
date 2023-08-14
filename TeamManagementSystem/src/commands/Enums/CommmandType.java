@@ -23,6 +23,9 @@ public enum CommmandType {
 
     LISTTASKS,
 
+    CHANGEBUGPRIORITY,
+
+
     //TODO
 //    ASSIGNTASKTOAMEMBER
 //    CHANGEPRIORITY,
