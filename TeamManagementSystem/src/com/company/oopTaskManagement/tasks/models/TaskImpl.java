@@ -76,4 +76,10 @@ public String getAuthor(){
             System.out.println(log.viewInfo());
         }
     }
+
+    @Override
+    public String toString() {
+        return String.format("Task id: %s%nTask title: %s%nTask description: %s%n ", id, title, description);
+
+    }
 }

@@ -65,6 +65,10 @@ public interface TaskManagementRepository {
 
    TaskImpl findTaskByName(String taskName);
 
+   TeamImpl findTeamByName(String teamName);
+
+
+
 
     // History showAllHistory( ArrayList<String> history);
 

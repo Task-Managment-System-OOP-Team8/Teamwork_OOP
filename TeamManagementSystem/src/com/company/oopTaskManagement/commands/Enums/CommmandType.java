@@ -8,11 +8,11 @@ public enum CommmandType {
     CREATESTORY, // done
     CREATEFEEDBACK, // done
     ADDMEMBERTOTEAM, // done
-    SHOWMEMBERSACTIVITY, // ??
-    SHOWALLMEMBERS,
+    SHOWMEMBERSACTIVITY, // DONE
+    SHOWALLMEMBERS, //done
     SHOWALLTEAMS,// done
     SHOWTEAMSACTIVITY, // ??
-    SHOWALLMEMBERSTEAM, //??
+    SHOWALLMEMBERSTEAM, // done
     SHOWALLTEAMBOARDS, // done
     SHOWBOARDSACTIVITY,
 
@@ -22,6 +22,8 @@ public enum CommmandType {
     LISTFEEDBACKS,
 
     LISTTASKS,
+    ADDCOMMENTTOTASK, //done
+
 
     //TODO
 //    ASSIGNTASKTOAMEMBER

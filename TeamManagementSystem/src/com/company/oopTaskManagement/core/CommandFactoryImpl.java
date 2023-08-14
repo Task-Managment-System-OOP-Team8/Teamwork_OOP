@@ -54,6 +54,12 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ListFeedbackCommand(taskManagementRepository);
             case LISTTASKS:
                 return new ListTaskCommand(taskManagementRepository);
+            case ADDCOMMENTTOTASK:
+                return new AddCommentToTaskCommand(taskManagementRepository);
+            case SHOWALLMEMBERSTEAM:
+                return new ShowAllTeamMembersCommand(taskManagementRepository);
+
+
             default:
                 throw new IllegalArgumentException(String.format(INVALID_COMMAND,commmandType));
 
