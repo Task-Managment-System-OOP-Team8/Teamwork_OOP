@@ -2,6 +2,7 @@ package teams;
 
 import Utils.ValidationHelpers;
 import tasks.contracts.Task;
+import tasks.models.TaskImpl;
 import teams.contracts.Board;
 
 import java.util.ArrayList;
@@ -56,5 +57,16 @@ public class BoardImpl implements Board {
         ValidationHelpers.ValidateIntRange(
                 name.length(), BOARD_NAME_MIN_LENGTH, BOARD_NAME_MAX_LENGTH, INVALID_BOARD_NAME);
         this.name = name;
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("Board name: %s", name)).append(System.lineSeparator());
+        for (Task task : tasks) {
+            sb.append(task.toString());
+        }
+        return sb.toString();
     }
 }

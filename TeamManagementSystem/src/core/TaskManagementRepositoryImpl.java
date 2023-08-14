@@ -25,6 +25,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String FEEDBACK_ALREADY_EXISTS = "Feedback already exists";
     public static final String NO_VALID_USERNAME = "There is no member with username: %s";
     public static final String NO_VALID_BOARD_NAME = "There is no board with name: %s";
+    public static final String A_TEAM_WITH_S_NAME_DOES_NOT_EXIST = "A team with %s name does not exist.";
     private int nextId;
     private List<MemberImpl> members;
     private List<TeamImpl> teams;
@@ -213,10 +214,18 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
                 return task;
             }
 
-            throw new IllegalArgumentException(String.format("Task with name %s doesn't exist.", taskName));
         }
+        throw new IllegalArgumentException(String.format("Task with name %s doesn't exist.", taskName));
+    }
 
-        return null;
+    @Override
+    public TeamImpl findTeamByName(String teamName) {
+       for(TeamImpl team : teams) {
+           if (team.getName().equalsIgnoreCase(teamName)) {
+               return team;
+           }
+       }
+       throw new IllegalArgumentException(String.format(A_TEAM_WITH_S_NAME_DOES_NOT_EXIST, teamName));
     }
 
 }
