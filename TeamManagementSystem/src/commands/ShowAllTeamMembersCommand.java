@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ShowAllTeamMembersCommand extends BaseCommand{
     public static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
-    protected ShowAllTeamMembersCommand(TaskManagementRepository taskManagementRepository) {
+    public ShowAllTeamMembersCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
 
