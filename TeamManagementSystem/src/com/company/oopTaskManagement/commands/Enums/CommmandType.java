@@ -1,0 +1,31 @@
+package com.company.oopTaskManagement.commands.Enums;
+
+public enum CommmandType {
+    CREATEMEMBER, //done
+    CREATETEAM, //done
+    CREATEANEWBOARD, // done
+    CREATEBUG, //done
+    CREATESTORY, // done
+    CREATEFEEDBACK, // done
+    ADDMEMBERTOTEAM, // done
+    SHOWMEMBERSACTIVITY, // ??
+    SHOWALLMEMBERS,
+    SHOWALLTEAMS,// done
+    SHOWTEAMSACTIVITY, // ??
+    SHOWALLMEMBERSTEAM, //??
+    SHOWALLTEAMBOARDS, // done
+    SHOWBOARDSACTIVITY,
+
+    LISTBUG,
+
+    LISTSTORIES,
+    LISTFEEDBACKS,
+
+    LISTTASKS,
+
+    //TODO
+//    ASSIGNTASKTOAMEMBER
+//    CHANGEPRIORITY,
+//    CHANGESEVERITY,
+//    CHANGESTATUS,
+}
