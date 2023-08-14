@@ -1,6 +1,6 @@
-import com.company.oopTaskManagement.tasks.models.BugImpl;
-import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
-import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
+import tasks.models.BugImpl;
+import tasks.models.enums.PriorityEnums;
+import tasks.models.enums.SeverityEnums;
 
 public class Main {
     public static void main(String[] args) {
