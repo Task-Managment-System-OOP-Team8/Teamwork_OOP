@@ -6,10 +6,10 @@ import commands.Enums.CommmandType;
 import commands.contracts.Command;
 import core.contracts.CommandFactory;
 import core.contracts.TaskManagementRepository;
-import listing.ListBugCommand;
-import listing.ListFeedbackCommand;
-import listing.ListStoryCommand;
-import listing.ListTaskCommand;
+import commands.listing.ListBugCommand;
+import commands.listing.ListFeedbackCommand;
+import commands.listing.ListStoryCommand;
+import commands.listing.ListTaskCommand;
 
 
 public class CommandFactoryImpl implements CommandFactory {

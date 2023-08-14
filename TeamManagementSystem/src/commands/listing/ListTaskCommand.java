@@ -1,4 +1,4 @@
-package listing;
+package commands.listing;
 
 import Utils.ListingHelpers;
 import commands.contracts.Command;
