@@ -31,7 +31,7 @@ public class AddCommentToTaskCommand implements Command {
         Comment comment1 = taskManagementRepository.createComment(author,comment);
         Task task1 = taskManagementRepository.findTaskByName(task);
 
-
+    //проверка дали автора е от отбора, ако не е хвърляме грешка
 
         return null;
     }

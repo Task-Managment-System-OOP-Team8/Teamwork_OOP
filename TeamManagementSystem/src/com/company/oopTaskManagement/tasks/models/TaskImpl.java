@@ -34,6 +34,10 @@ public abstract class TaskImpl implements Task {
         this.history = new ArrayList<>();
 
     }
+@Override
+public ArrayList<Comment> getComment(){
+        return new ArrayList<>(comments);
+}
 
     private void setTitle(String title) {
         ValidationHelpers.ValidateIntRange(title.length(), TITLE_MIN_LENGTH, TITLE_MAX_LENGTH, INVALID_TITLE);
@@ -45,11 +49,6 @@ public abstract class TaskImpl implements Task {
         ValidationHelpers.ValidateIntRange(description.length(), DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, INVALID_DESCRIPTION);
         this.description = description;
     }
-/*
-public String getAuthor(){
-        this.author;
-
-    }*/
 
 
     public void addComment(String author, String message) {

@@ -9,7 +9,7 @@ import com.company.oopTaskManagement.tasks.models.TaskImpl;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SizeEnums;
-import tasks.models.enums.*;
+
 import com.company.oopTaskManagement.teams.BoardImpl;
 import com.company.oopTaskManagement.teams.MemberImpl;
 import com.company.oopTaskManagement.teams.TeamImpl;

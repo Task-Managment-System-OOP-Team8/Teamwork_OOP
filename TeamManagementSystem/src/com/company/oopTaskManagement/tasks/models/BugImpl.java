@@ -5,7 +5,7 @@ import com.company.oopTaskManagement.tasks.models.enums.BugEnums;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
 import com.company.oopTaskManagement.tasks.Comment;
-import tasks.models.enums.*;
+
 
 import java.util.ArrayList;
 
