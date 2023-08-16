@@ -1,8 +1,5 @@
 package com.company.oopTaskManagement.tasks;
 
-import com.company.oopTaskManagement.tasks.contracts.Commentable;
-
-import java.util.ArrayList;
 //TODO
 public class Comment  {
 

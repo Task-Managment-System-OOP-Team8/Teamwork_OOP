@@ -155,9 +155,9 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public BugImpl createBug(String title, String description, PriorityEnums priority,
+    public BugImpl createBug(String title, String description,List<String> steps,PriorityEnums priority,
                              SeverityEnums severity, String assignee) {
-        BugImpl bug = new BugImpl(title, description, priority, severity, assignee);
+        BugImpl bug = new BugImpl(title, description,steps, priority, severity, assignee);
         this.bugs.add(bug);
         return bug;
     }

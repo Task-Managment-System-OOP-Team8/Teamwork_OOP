@@ -7,11 +7,12 @@ import com.company.oopTaskManagement.tasks.models.BugImpl;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
 
+import java.util.Collections;
 import java.util.List;
 
 public class CreateBugCommand extends BaseCommand {
     public static final String BUG_S_CREATED_SUCCESSFULLY = "Bug %s created successfully";
-    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 5;
+    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 6;
 
     public CreateBugCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
@@ -22,15 +23,16 @@ public class CreateBugCommand extends BaseCommand {
         ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS);
         String bugTitle = parameters.get(0);
         String description = parameters.get(1);
-        PriorityEnums priority = ParsingHelpers.tryParseEnum(parameters.get(2), PriorityEnums.class);
-        SeverityEnums severity = ParsingHelpers.tryParseEnum(parameters.get(3), SeverityEnums.class);
-        String assignee = parameters.get(4);
+        String steps = parameters.get(2);
+        PriorityEnums priority = ParsingHelpers.tryParseEnum(parameters.get(3), PriorityEnums.class);
+        SeverityEnums severity = ParsingHelpers.tryParseEnum(parameters.get(4), SeverityEnums.class);
+        String assignee = parameters.get(5);
 
-        return createBug(bugTitle, description, priority, severity, assignee);
+        return createBug(bugTitle, description, Collections.singletonList(steps), priority, severity, assignee);
     }
-    private String createBug(String bugTitle, String description, PriorityEnums priority,
+    private String createBug(String bugTitle, String description,List<String> steps, PriorityEnums priority,
                              SeverityEnums severity, String assignee) {
-        BugImpl bug = getTaskManagementRepository().createBug(bugTitle, description, priority, severity, assignee);
+        BugImpl bug = getTaskManagementRepository().createBug(bugTitle, description,steps, priority, severity, assignee);
         getTaskManagementRepository().addBug(bug);
         return String.format(BUG_S_CREATED_SUCCESSFULLY, bugTitle);
     }

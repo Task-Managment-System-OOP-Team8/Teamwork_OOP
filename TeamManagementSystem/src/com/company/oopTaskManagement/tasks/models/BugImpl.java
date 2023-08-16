@@ -8,6 +8,7 @@ import com.company.oopTaskManagement.tasks.Comment;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BugImpl extends TaskImpl implements Bug {
 
@@ -15,12 +16,12 @@ public class BugImpl extends TaskImpl implements Bug {
     private ArrayList<String> steps;
     private SeverityEnums severity;
     private BugEnums status;
-    private String assignee;
     private PriorityEnums priority;
+    private String assignee;
 
 
-    public BugImpl( String title, String description, PriorityEnums priority,
-                   SeverityEnums severity, String assignee) {
+    public BugImpl(String title, String description, List<String> steps,
+                   PriorityEnums priority, SeverityEnums severity,String assignee) {
         super(title, description);
         this.steps = new ArrayList<>();
         this.priority=priority;
@@ -61,17 +62,6 @@ public class BugImpl extends TaskImpl implements Bug {
     }
 
 
-
-    public ArrayList<Comment> getComments() {
-        return new ArrayList<>(comments);
-    }
-
-    //TODO
-
-    public String getAuthor() {
-        return null;
-    }
-
     @Override
     public String getTitle() {
         return title;
@@ -102,5 +92,10 @@ public class BugImpl extends TaskImpl implements Bug {
                 "Priority: %s\n" +
                 "Severity: %s\n" +
                 "Assignee: %s\n", title,description,priority,severity,assignee);
+    }
+//TODO - Comments!
+    @Override
+    public ArrayList<Comment> getComment() {
+        return new ArrayList<>();
     }
 }

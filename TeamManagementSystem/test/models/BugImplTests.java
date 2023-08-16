@@ -1,6 +1,5 @@
 package models;
 
-import com.company.oopTaskManagement.tasks.Comment;
 import com.company.oopTaskManagement.tasks.models.BugImpl;
 import com.company.oopTaskManagement.tasks.models.enums.BugEnums;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
@@ -11,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import utils.TestUtilities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class BugImplTests {
@@ -88,6 +88,7 @@ public class BugImplTests {
         return new BugImpl(
                 VALID_TITLE,
                 VALID_DESCRIPTION,
+                Collections.singletonList("Steps"),
                 PriorityEnums.HIGH,
                 SeverityEnums.MAJOR,
                 "Assignee");

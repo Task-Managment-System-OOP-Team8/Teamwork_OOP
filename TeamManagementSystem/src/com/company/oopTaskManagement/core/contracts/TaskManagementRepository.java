@@ -33,7 +33,7 @@ public interface TaskManagementRepository {
 
     BoardImpl createBoard(String boardName);
 
-    BugImpl createBug(String title, String description, PriorityEnums priority,
+    BugImpl createBug(String title, String description,List<String> steps, PriorityEnums priority,
                       SeverityEnums severity, String assignee);  //?
 
     StoryImpl createStory(String title, String description, PriorityEnums priority, SizeEnums size, String assignee);  //?

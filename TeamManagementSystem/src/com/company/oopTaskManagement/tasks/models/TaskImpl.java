@@ -1,8 +1,8 @@
 package com.company.oopTaskManagement.tasks.models;
 
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
+import com.company.oopTaskManagement.tasks.contracts.Comment;
 import com.company.oopTaskManagement.tasks.contracts.Task;
-import com.company.oopTaskManagement.tasks.Comment;
 import com.company.oopTaskManagement.tasks.History;
 
 import java.util.ArrayList;
@@ -34,31 +34,6 @@ public abstract class TaskImpl implements Task {
         this.history = new ArrayList<>();
 
     }
-@Override
-public ArrayList<Comment> getComment(){
-        return new ArrayList<>(comments);
-}
-
-    private void setTitle(String title) {
-        ValidationHelpers.ValidateIntRange(title.length(), TITLE_MIN_LENGTH, TITLE_MAX_LENGTH, INVALID_TITLE);
-        this.title = title;
-    }
-
-
-    public void setDescription(String description) {
-        ValidationHelpers.ValidateIntRange(description.length(), DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, INVALID_DESCRIPTION);
-        this.description = description;
-    }
-
-
-    public void addComment(String author, String message) {
-        comments.add(new Comment(author, message));
-    }
-
-    public void addHistory(String input) {
-        history.add(new History(input));
-    }
-
     @Override
     public abstract String getTitle();
 
@@ -68,6 +43,27 @@ public ArrayList<Comment> getComment(){
     @Override
     public int getId() {
         return this.id;
+    }
+
+    private void setTitle(String title) {
+        ValidationHelpers.ValidateIntRange(title.length(), TITLE_MIN_LENGTH, TITLE_MAX_LENGTH, INVALID_TITLE);
+        this.title = title;
+    }
+
+
+    private void setDescription(String description) {
+        ValidationHelpers.ValidateIntRange(description.length(), DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, INVALID_DESCRIPTION);
+        this.description = description;
+    }
+
+    @Override
+    public void addComment(com.company.oopTaskManagement.tasks.contracts.Comment comment) {
+        comments.add(comment);
+
+    }
+//TODO - Коментарите още не са ок, историята също
+    public void addHistory(String input) {
+        history.add(new History(input));
     }
 
     public void displayHistory() {
