@@ -40,7 +40,7 @@ public class MemberImpl implements Member {
     //TODO
     @Override
     public ArrayList<String> getHistory() {
-        return new ArrayList<>(history);
+        return history;
     }
 
     @Override

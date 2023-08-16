@@ -17,5 +17,5 @@ public interface Member {
      void addCommentToTask(Task taskToAddComment, Comment commentToAdd);
 
      void removeCommentToTask(Task taskToRemoveComment,Comment commentToRemove);
-     void addActivity(String activity);
+   //  void addActivity(String activity);
 }
