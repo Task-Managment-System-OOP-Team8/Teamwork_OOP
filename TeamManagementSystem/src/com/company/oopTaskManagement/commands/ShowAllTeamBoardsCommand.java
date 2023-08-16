@@ -6,6 +6,7 @@ import com.company.oopTaskManagement.teams.BoardImpl;
 import com.company.oopTaskManagement.teams.TeamImpl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShowAllTeamBoardsCommand extends BaseCommand{
 
@@ -21,11 +22,9 @@ public class ShowAllTeamBoardsCommand extends BaseCommand{
         String teamName = parameters.get(0);
 
         TeamImpl team = getTaskManagementRepository().findTeamByName(teamName);
-        List<BoardImpl> teamBoards = team.getBoards();
-        StringBuilder sb = new StringBuilder();
-        for (BoardImpl board : teamBoards) {
-            sb.append(board.toString());
-        }
-        return sb.toString();
+
+        return team.getBoards().stream()
+                .map(BoardImpl::toString)
+                .collect(Collectors.joining());
     }
 }

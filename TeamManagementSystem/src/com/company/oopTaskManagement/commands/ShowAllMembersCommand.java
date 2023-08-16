@@ -4,6 +4,7 @@ import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.teams.MemberImpl;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShowAllMembersCommand extends BaseCommand{
 
@@ -25,10 +26,9 @@ public class ShowAllMembersCommand extends BaseCommand{
         if (members.isEmpty()) {
             throw new IllegalArgumentException(NO_REGISTERED_MEMBERS);
         }
-        StringBuilder stringBuilder = new StringBuilder();
-        for (MemberImpl member : members) {
-            stringBuilder.append(member.toString());
-        }
-        return stringBuilder.toString();
+
+        return members.stream()
+                .map(MemberImpl::toString)
+                .collect(Collectors.joining());
     }
 }

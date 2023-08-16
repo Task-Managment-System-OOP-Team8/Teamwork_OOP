@@ -25,6 +25,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String NO_VALID_USERNAME = "There is no member with username: %s";
     public static final String NO_VALID_BOARD_NAME = "There is no board with name: %s";
     public static final String A_TEAM_WITH_S_NAME_DOES_NOT_EXIST = "A team with %s name does not exist.";
+    public static final String TASK_WITH_NAME_S_DOESN_T_EXIST = "Task with name %s doesn't exist.";
     private int nextId;
     private List<MemberImpl> members;
     private List<TeamImpl> teams;
@@ -131,22 +132,18 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     @Override
     public MemberImpl findMemberByUsername(String username) {
-        for (MemberImpl member : members) {
-            if (member.getName().equalsIgnoreCase(username)) {
-                return member;
-            }
-        }
-        throw new IllegalArgumentException(String.format(NO_VALID_USERNAME, username));
+        return members.stream()
+                .filter(member -> member.getName().equalsIgnoreCase(username))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(String.format(NO_VALID_USERNAME, username)));
     }
 
     @Override
     public BoardImpl findBoardByName(String boardName) {
-        for (BoardImpl board : boards) {
-            if (board.getName().equalsIgnoreCase(boardName)) {
-                return board;
-            }
-        }
-        throw new IllegalArgumentException(String.format(NO_VALID_BOARD_NAME, boardName));
+        return boards.stream()
+                .filter(board -> board.getName().equalsIgnoreCase(boardName))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(String.format(NO_VALID_BOARD_NAME, boardName)));
     }
 
     @Override
@@ -208,23 +205,18 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     @Override
     public TaskImpl findTaskByName(String taskName) {
-        for (TaskImpl task : getTasks()) {
-            if (task.getTitle().equalsIgnoreCase(taskName)) {
-                return task;
-            }
-
-        }
-        throw new IllegalArgumentException(String.format("Task with name %s doesn't exist.", taskName));
+        return getTasks().stream()
+                .filter(task -> task.getTitle().equalsIgnoreCase(taskName))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(String.format(TASK_WITH_NAME_S_DOESN_T_EXIST, taskName)));
     }
 
     @Override
     public TeamImpl findTeamByName(String teamName) {
-       for(TeamImpl team : teams) {
-           if (team.getName().equalsIgnoreCase(teamName)) {
-               return team;
-           }
-       }
-       throw new IllegalArgumentException(String.format(A_TEAM_WITH_S_NAME_DOES_NOT_EXIST, teamName));
+        return teams.stream()
+                .filter(team -> team.getName().equalsIgnoreCase(teamName))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(String.format(A_TEAM_WITH_S_NAME_DOES_NOT_EXIST, teamName)));
     }
 
 }

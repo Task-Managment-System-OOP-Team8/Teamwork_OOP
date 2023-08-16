@@ -21,7 +21,6 @@ public class BoardImpl implements Board {
         history = new ArrayList<>();
     }
 
-
     @Override
     public String getName() {
         return name;
@@ -47,7 +46,7 @@ public class BoardImpl implements Board {
     public void removeTask(Task task) {
         tasks.remove(task);
     }
-@Override
+    @Override
     public void addActivity(String activity) {
         history.add(activity);
     }
