@@ -12,20 +12,12 @@ public class  FeedbackImpl extends TaskImpl implements Feedback {
     private int rating;
     private FeedbackEnums status;
 
-
-
-
     public FeedbackImpl(String title, String description, int rating) {
         super(title,description);
        setRating(rating);
         this.status= FeedbackEnums.NEW;
 
     }
-
-    private void setRating(int rating) {
-        this.rating = rating;
-    }
-//TODO
 
     public ArrayList<Comment> getComments() {
         return new ArrayList<>();
@@ -65,5 +57,8 @@ public class  FeedbackImpl extends TaskImpl implements Feedback {
     @Override
     public ArrayList<Comment> getComment() {
         return null;
+    }
+    private void setRating(int rating) {
+        this.rating = rating;
     }
 }

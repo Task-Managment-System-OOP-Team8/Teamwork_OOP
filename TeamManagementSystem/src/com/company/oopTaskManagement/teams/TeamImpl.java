@@ -34,12 +34,6 @@ public class TeamImpl implements Team {
         return new ArrayList<>(boards);
     }
 
-    private void setName(String name) {
-        //TODO
-        ValidationHelpers.ValidateIntRange(name.length(), NAME_MIN_LENGTH, NAME_MAX_LENGTH, INVALID_TEAM_NAME);
-        this.name = name;
-    }
-
     public void addMembers(MemberImpl member) {
         members.add(member);
     }
@@ -48,9 +42,14 @@ public class TeamImpl implements Team {
         boards.add(board);
     }
 
-
     @Override
     public String getAsString() {
         return String.format("%s",getName());
+    }
+
+    private void setName(String name) {
+        //TODO
+        ValidationHelpers.ValidateIntRange(name.length(), NAME_MIN_LENGTH, NAME_MAX_LENGTH, INVALID_TEAM_NAME);
+        this.name = name;
     }
 }

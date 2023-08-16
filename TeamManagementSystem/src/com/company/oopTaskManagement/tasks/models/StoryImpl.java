@@ -25,12 +25,7 @@ public class StoryImpl extends TaskImpl implements Story {
        setAssignee(assignee);
 
     }
-
     //TODO
-    private void setAssignee(String assignee) {
-        this.assignee = assignee;
-    }
-
     @Override
     public PriorityEnums getPriority() {
         return priority;
@@ -75,5 +70,9 @@ public class StoryImpl extends TaskImpl implements Story {
     @Override
     public ArrayList<Comment> getComment() {
         return null;
+    }
+
+    private void setAssignee(String assignee) {
+        this.assignee = assignee;
     }
 }

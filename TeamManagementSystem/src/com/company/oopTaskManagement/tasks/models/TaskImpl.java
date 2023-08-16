@@ -45,23 +45,12 @@ public abstract class TaskImpl implements Task {
         return this.id;
     }
 
-    private void setTitle(String title) {
-        ValidationHelpers.ValidateIntRange(title.length(), TITLE_MIN_LENGTH, TITLE_MAX_LENGTH, INVALID_TITLE);
-        this.title = title;
-    }
-
-
-    private void setDescription(String description) {
-        ValidationHelpers.ValidateIntRange(description.length(), DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, INVALID_DESCRIPTION);
-        this.description = description;
-    }
-
     @Override
     public void addComment(com.company.oopTaskManagement.tasks.contracts.Comment comment) {
         comments.add(comment);
 
     }
-//TODO - Коментарите още не са ок, историята също
+    //TODO - Коментарите още не са ок, историята също
     public void addHistory(String input) {
         history.add(new History(input));
     }
@@ -77,4 +66,17 @@ public abstract class TaskImpl implements Task {
         return String.format("Task id: %s%nTask title: %s%nTask description: %s%n ", id, title, description);
 
     }
+
+    private void setTitle(String title) {
+        ValidationHelpers.ValidateIntRange(title.length(), TITLE_MIN_LENGTH, TITLE_MAX_LENGTH, INVALID_TITLE);
+        this.title = title;
+    }
+
+
+    private void setDescription(String description) {
+        ValidationHelpers.ValidateIntRange(description.length(), DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, INVALID_DESCRIPTION);
+        this.description = description;
+    }
+
+
 }

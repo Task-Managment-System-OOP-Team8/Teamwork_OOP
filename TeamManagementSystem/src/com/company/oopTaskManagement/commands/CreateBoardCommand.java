@@ -20,8 +20,6 @@ public class CreateBoardCommand extends BaseCommand {
         return createBoard(boardName);
     }
 
-
-
     private String createBoard(String boardName) {
         BoardImpl board = getTaskManagementRepository().createBoard(boardName);
         getTaskManagementRepository().addBoard(board);

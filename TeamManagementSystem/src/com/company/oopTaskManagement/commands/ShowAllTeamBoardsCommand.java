@@ -15,7 +15,6 @@ public class ShowAllTeamBoardsCommand extends BaseCommand{
     public ShowAllTeamBoardsCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
-
     @Override
     protected String executeCommand(List<String> parameters) {
         ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_PARAMETERS);

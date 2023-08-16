@@ -45,6 +45,21 @@ public class BugImpl extends TaskImpl implements Bug {
         return severity;
     }
 
+    @Override
+    public String getAsString() {
+
+        return String.format("BUG:\n" +
+                "Title: %s\n" +
+                "Description %s\n" +
+                "Priority: %s\n" +
+                "Severity: %s\n" +
+                "Assignee: %s\n", title,description,priority,severity,assignee);
+    }
+    //TODO - Comments!
+    @Override
+    public ArrayList<Comment> getComment() {
+        return new ArrayList<>();
+    }
 
     @Override
     public BugEnums getStatus() {
@@ -83,19 +98,5 @@ public class BugImpl extends TaskImpl implements Bug {
         this.priority = priority;
     }
 //TODO
-    @Override
-    public String getAsString() {
 
-        return String.format("BUG:\n" +
-                "Title: %s\n" +
-                "Description %s\n" +
-                "Priority: %s\n" +
-                "Severity: %s\n" +
-                "Assignee: %s\n", title,description,priority,severity,assignee);
-    }
-//TODO - Comments!
-    @Override
-    public ArrayList<Comment> getComment() {
-        return new ArrayList<>();
-    }
 }

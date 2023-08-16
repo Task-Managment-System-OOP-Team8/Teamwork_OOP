@@ -21,13 +21,6 @@ public class MemberImpl implements Member {
         this.tasks = new ArrayList<>();
         this.history = new ArrayList<>();
     }
-
-    private void setName(String name) {
-        ValidationHelpers.ValidateIntRange(
-                name.length(), MEMBER_NAME_MIN_LENGTH, MEMBER_NAME_MAX_LENGTH, INVALID_MEMBER_NAME);
-        this.name = name;
-    }
-
     @Override
     public String getName() {
         return name;
@@ -71,6 +64,12 @@ public class MemberImpl implements Member {
     @Override
     public String toString() {
         return String.format("Member name: %s", getName());
+    }
+
+    private void setName(String name) {
+        ValidationHelpers.ValidateIntRange(
+                name.length(), MEMBER_NAME_MIN_LENGTH, MEMBER_NAME_MAX_LENGTH, INVALID_MEMBER_NAME);
+        this.name = name;
     }
 }
 

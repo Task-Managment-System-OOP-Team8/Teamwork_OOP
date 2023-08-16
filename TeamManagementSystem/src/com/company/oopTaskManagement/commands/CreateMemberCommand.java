@@ -21,7 +21,6 @@ public class CreateMemberCommand extends BaseCommand{
         return registerUser(username);
 
     }
-
     private String registerUser(String username) {
         MemberImpl member = getTaskManagementRepository().createMember(username);
         getTaskManagementRepository().addMember(member);
