@@ -1,10 +1,9 @@
 package com.company.oopTaskManagement.core;
 
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
-import com.company.oopTaskManagement.tasks.Comment;
+import com.company.oopTaskManagement.tasks.CommentImpl;
 import com.company.oopTaskManagement.tasks.History;
-import com.company.oopTaskManagement.tasks.contracts.Bug;
-import com.company.oopTaskManagement.tasks.contracts.Story;
+import com.company.oopTaskManagement.tasks.contracts.*;
 import com.company.oopTaskManagement.tasks.models.BugImpl;
 import com.company.oopTaskManagement.tasks.models.FeedbackImpl;
 import com.company.oopTaskManagement.tasks.models.StoryImpl;
@@ -20,6 +19,7 @@ import com.company.oopTaskManagement.teams.contracts.Member;
 import com.company.oopTaskManagement.teams.contracts.Team;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TaskManagementRepositoryImpl implements TaskManagementRepository {
@@ -37,7 +37,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     private List<Board> boards;
     private List<Bug> bugs;
     private List<Story> stories;
-    private List<com.company.oopTaskManagement.tasks.contracts.Feedback> feedbacks;
+    private List<Feedback> feedbacks;
     private List<Comment> comments;
 
     private List<TaskImpl> task;
@@ -117,12 +117,12 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public MemberImpl createMember(String name) {
+    public Member createMember(String name) {
         return new MemberImpl(name);
     }
 
     @Override
-    public TeamImpl createTeam(String name) {
+    public Team createTeam(String name) {
         return new TeamImpl(name);
     }
 
@@ -136,7 +136,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public FeedbackImpl addFeedback(FeedbackImpl feedbackTitle) {
+    public Feedback addFeedback(Feedback feedbackTitle) {
         if (feedbacks.contains(feedbackTitle)) {
             throw new IllegalArgumentException(FEEDBACK_ALREADY_EXISTS);
         }
@@ -145,15 +145,15 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public MemberImpl findMemberByUsername(String username) {
-        return members.stream()
+    public Member findMemberByUsername(String username) {
+        return member.stream()
                 .filter(member -> member.getName().equalsIgnoreCase(username))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(String.format(NO_VALID_USERNAME, username)));
     }
 
     @Override
-    public BoardImpl findBoardByName(String boardName) {
+    public Board findBoardByName(String boardName) {
         return boards.stream()
                 .filter(board -> board.getName().equalsIgnoreCase(boardName))
                 .findFirst()
@@ -161,20 +161,20 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public BoardImpl createBoard(String boardName) {
+    public Board createBoard(String boardName) {
         return new BoardImpl(boardName);
     }
 
     @Override
-    public BugImpl createBug(String title, String description, PriorityEnums priority,
-                             SeverityEnums severity, String assignee) {
-        BugImpl bug = new BugImpl(title, description, priority, severity, assignee);
+    public Bug createBug(String title, String description, String steps, PriorityEnums priority,
+                         SeverityEnums severity, String assignee) {
+        BugImpl bug = new BugImpl(title, description, Collections.singletonList(steps), priority, severity, assignee);
         this.bugs.add(bug);
         return bug;
     }
 
     @Override
-    public StoryImpl createStory(String title, String description, PriorityEnums priority,
+    public Story createStory(String title, String description, PriorityEnums priority,
                                  SizeEnums size, String assignee) {
         StoryImpl story = new StoryImpl(title, description, priority, size, assignee);
         this.stories.add(story);
@@ -182,7 +182,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public FeedbackImpl createFeedback(String title, String description, int rating) {
+    public Feedback createFeedback(String title, String description, int rating) {
         FeedbackImpl feedback = new FeedbackImpl(title, description, rating);
         this.feedbacks.add(feedback);
         return feedback;
@@ -190,35 +190,35 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     @Override
     public Comment createComment(String author, String message) {
-        Comment comment = new Comment(author, message);
-        this.comments.add(comment);
-        return comment;
-    }
+        CommentImpl comment = new CommentImpl(author,message);
+        comments.add(comment);
+     return comment;
+        }
 
     @Override
-    public List<BugImpl> getBugs() {
+    public List<Bug> getBugs() {
         return new ArrayList<>(bugs);
     }
 
     @Override
-    public List<StoryImpl> getStories() {
+    public List<Story> getStories() {
         return new ArrayList<>(stories);
     }
 
     @Override
-    public List<FeedbackImpl> getFeedbacks() {
+    public List<Feedback> getFeedbacks() {
         return new ArrayList<>(feedbacks);
     }
 
     //create history
     @Override
-    public List<TaskImpl> getTasks() {
+    public List<Task> getTasks() {
         return new ArrayList<>(task);
     }
 
 
     @Override
-    public TaskImpl findTaskByName(String taskName) {
+    public Task findTaskByName(String taskName) {
         return getTasks().stream()
                 .filter(task -> task.getTitle().equalsIgnoreCase(taskName))
                 .findFirst()
@@ -226,7 +226,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public TeamImpl findTeamByName(String teamName) {
+    public Team findTeamByName(String teamName) {
         return teams.stream()
                 .filter(team -> team.getName().equalsIgnoreCase(teamName))
                 .findFirst()

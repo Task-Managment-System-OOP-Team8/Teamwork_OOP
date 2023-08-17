@@ -68,6 +68,7 @@ public abstract class TaskImpl implements Task {
     }
 
     //TODO - Коментарите още не са ок, историята също
+
     public void addHistory(String input) {
         history.add(new History(input));
     }
