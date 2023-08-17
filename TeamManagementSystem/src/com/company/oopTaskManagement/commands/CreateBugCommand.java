@@ -6,7 +6,7 @@ import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.tasks.contracts.Bug;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
-import java.util.Collections;
+
 import java.util.List;
 
 public class CreateBugCommand extends BaseCommand {
@@ -27,9 +27,9 @@ public class CreateBugCommand extends BaseCommand {
         SeverityEnums severity = ParsingHelpers.tryParseEnum(parameters.get(4), SeverityEnums.class);
         String assignee = parameters.get(5);
 
-        return createBug(bugTitle, description, Collections.singletonList(steps), priority, severity, assignee);
+        return createBug(bugTitle, description, steps, priority, severity, assignee);
     }
-    private String createBug(String bugTitle, String description,List<String> steps, PriorityEnums priority,
+    private String createBug(String bugTitle, String description, String steps, PriorityEnums priority,
                              SeverityEnums severity, String assignee) {
         Bug bug = getTaskManagementRepository().createBug(bugTitle, description,steps, priority, severity, assignee);
         getTaskManagementRepository().addBug(bug);

@@ -7,6 +7,7 @@ import com.company.oopTaskManagement.tasks.contracts.*;
 import com.company.oopTaskManagement.tasks.models.BugImpl;
 import com.company.oopTaskManagement.tasks.models.FeedbackImpl;
 import com.company.oopTaskManagement.tasks.models.StoryImpl;
+import com.company.oopTaskManagement.tasks.models.TaskImpl;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SizeEnums;
@@ -18,6 +19,7 @@ import com.company.oopTaskManagement.teams.contracts.Member;
 import com.company.oopTaskManagement.teams.contracts.Team;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TaskManagementRepositoryImpl implements TaskManagementRepository {
@@ -35,21 +37,21 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     private List<Board> boards;
     private List<Bug> bugs;
     private List<Story> stories;
-    private List<com.company.oopTaskManagement.tasks.contracts.Feedback> feedbacks;
+    private List<Feedback> feedbacks;
     private List<Comment> comments;
 
-    private List<Task> task;
+    private List<TaskImpl> task;
 
     public TaskManagementRepositoryImpl() {
         nextId = 1;
-        this.bugs = new ArrayList<Bug>();
-        this.stories = new ArrayList<Story>();
-        this.feedbacks = new ArrayList<Feedback>();
-        this.comments = new ArrayList<Comment>();
-        this.boards = new ArrayList<Board>();
-        this.member = new ArrayList<Member>();
-        this.teams = new ArrayList<Team>();
-        this.task = new ArrayList<Task>();
+        this.bugs = new ArrayList<>();
+        this.stories = new ArrayList<>();
+        this.feedbacks = new ArrayList<>();
+        this.comments = new ArrayList<>();
+        this.boards = new ArrayList<>();
+        this.member = new ArrayList<>();
+        this.teams = new ArrayList<>();
+        this.task = new ArrayList<>();
     }
 
     @Override
@@ -164,9 +166,9 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public Bug createBug(String title, String description,List<String> steps, PriorityEnums priority,
-                             SeverityEnums severity, String assignee) {
-        Bug bug = new BugImpl(title, description,steps, priority, severity, assignee);
+    public Bug createBug(String title, String description, String steps, PriorityEnums priority,
+                         SeverityEnums severity, String assignee) {
+        BugImpl bug = new BugImpl(title, description, Collections.singletonList(steps), priority, severity, assignee);
         this.bugs.add(bug);
         return bug;
     }

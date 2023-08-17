@@ -8,6 +8,7 @@ import com.company.oopTaskManagement.tasks.models.enums.SizeEnums;
 import com.company.oopTaskManagement.teams.contracts.Board;
 import com.company.oopTaskManagement.teams.contracts.Member;
 import com.company.oopTaskManagement.teams.contracts.Team;
+
 import java.util.List;
 
 public interface TaskManagementRepository {

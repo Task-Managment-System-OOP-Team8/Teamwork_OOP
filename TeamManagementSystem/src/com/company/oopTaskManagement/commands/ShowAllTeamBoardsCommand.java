@@ -5,6 +5,7 @@ import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.teams.contracts.Board;
 import com.company.oopTaskManagement.teams.contracts.Team;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShowAllTeamBoardsCommand extends BaseCommand{
 
@@ -17,16 +18,15 @@ public class ShowAllTeamBoardsCommand extends BaseCommand{
 
     //todo- грешка в toString
     @Override
-    protected String executeCommand(List<String> parameters) {
+    public String executeCommand(List<String> parameters) {
         ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_PARAMETERS);
         String teamName = parameters.get(0);
 
         Team team = getTaskManagementRepository().findTeamByName(teamName);
-        List<Board> teamBoards = team.getBoards();
-        StringBuilder sb = new StringBuilder();
-        for (Board board : teamBoards) {
-            sb.append(board.toString());
-        }
-        return sb.toString();
+
+        return team.getBoards().stream()
+                .map(Board::toString)
+                .collect(Collectors.joining());
+
     }
 }
