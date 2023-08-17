@@ -56,8 +56,8 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ListTaskCommand(taskManagementRepository);
             case ADDCOMMENTTOTASK:
                 return new AddCommentToTaskCommand(taskManagementRepository);
-//            case SHOWALLMEMBERSTEAM:
-//                return new ShowAllTeamMembersCommand(taskManagementRepository);
+       //     case SHOWALLMEMBERSTEAM:
+      //          return new ShowAllTeamMembersCommand(taskManagementRepository);
 
 
             default:

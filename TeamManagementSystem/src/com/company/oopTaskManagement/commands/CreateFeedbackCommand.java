@@ -25,7 +25,6 @@ public class CreateFeedbackCommand extends BaseCommand {
         return createFeedback(feedbackTitle, feedbackDescription, feedbackRating);
 
     }
-
     private String createFeedback(String title, String description, int rating) {
         Feedback feedback = getTaskManagementRepository().createFeedback(title, description, rating);
         getTaskManagementRepository().addFeedback(feedback);

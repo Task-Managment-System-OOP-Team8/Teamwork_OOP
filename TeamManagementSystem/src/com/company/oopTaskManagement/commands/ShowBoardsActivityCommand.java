@@ -12,7 +12,6 @@ public class ShowBoardsActivityCommand extends BaseCommand {
     public ShowBoardsActivityCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
-
     @Override
     protected String executeCommand(List<String> parameters) {
         ValidationHelpers.validateArgumentsCount(parameters,EXPECTED_NUMBER_OF_ARGUMENTS);

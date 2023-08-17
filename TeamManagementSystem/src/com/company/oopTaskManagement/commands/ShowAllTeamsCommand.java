@@ -5,6 +5,7 @@ import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.teams.contracts.Team;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShowAllTeamsCommand extends BaseCommand{
 
@@ -26,10 +27,9 @@ public class ShowAllTeamsCommand extends BaseCommand{
         if (teams.isEmpty()) {
             throw new IllegalArgumentException(THERE_IS_NO_REGISTERED_TEAMS);
         }
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Team team : teams) {
-            stringBuilder.append(team.toString());
-        }
-        return stringBuilder.toString();
+
+        return teams.stream()
+                .map(Team::toString)
+                .collect(Collectors.joining());
     }
 }

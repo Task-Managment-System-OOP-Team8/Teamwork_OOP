@@ -6,8 +6,8 @@ import com.company.oopTaskManagement.teams.BoardImpl;
 import com.company.oopTaskManagement.teams.TeamImpl;
 import com.company.oopTaskManagement.teams.contracts.Board;
 import com.company.oopTaskManagement.teams.contracts.Team;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShowAllTeamBoardsCommand extends BaseCommand{
 
@@ -18,6 +18,7 @@ public class ShowAllTeamBoardsCommand extends BaseCommand{
         super(taskManagementRepository);
     }
 
+    //todo- грешка в toString
     @Override
     protected String executeCommand(List<String> parameters) {
         ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_PARAMETERS);

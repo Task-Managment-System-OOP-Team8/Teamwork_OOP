@@ -20,7 +20,6 @@ public class CreateTeamCommand extends BaseCommand {
         String teamName = parameters.get(0);
         return registerTeam(teamName);
     }
-
     private String registerTeam(String teamName) {
         Team teams = getTaskManagementRepository().createTeam(teamName);
         return String.format(TEAM_REGISTERED, teams);

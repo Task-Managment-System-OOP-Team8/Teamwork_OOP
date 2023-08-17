@@ -1,7 +1,8 @@
 package com.company.oopTaskManagement.teams;
 
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
-import com.company.oopTaskManagement.tasks.Comment;
+import com.company.oopTaskManagement.tasks.CommentImpl;
+import com.company.oopTaskManagement.tasks.History;
 import com.company.oopTaskManagement.tasks.contracts.Task;
 import com.company.oopTaskManagement.teams.contracts.Member;
 
@@ -14,20 +15,13 @@ public class MemberImpl implements Member {
             "Member name must be between %d and %d symbols",MEMBER_NAME_MIN_LENGTH,MEMBER_NAME_MAX_LENGTH);
     private String name;
     private ArrayList<Task> tasks;
-    private ArrayList<String> history;
+    private ArrayList<History> history;
 
     public MemberImpl(String name) {
         setName(name);
         this.tasks = new ArrayList<>();
         this.history = new ArrayList<>();
     }
-
-    private void setName(String name) {
-        ValidationHelpers.ValidateIntRange(
-                name.length(), MEMBER_NAME_MIN_LENGTH, MEMBER_NAME_MAX_LENGTH, INVALID_MEMBER_NAME);
-        this.name = name;
-    }
-
     @Override
     public String getName() {
         return name;
@@ -39,7 +33,7 @@ public class MemberImpl implements Member {
     }
     //TODO
     @Override
-    public ArrayList<String> getHistory() {
+    public ArrayList<History> getHistory() {
         return new ArrayList<>(history);
     }
 
@@ -53,24 +47,35 @@ public class MemberImpl implements Member {
         tasks.remove(task);
 
     }
-
+//todo - нещо не е ок с кастване
     @Override
-    public void addCommentToTask(Task taskToAddComment, Comment commentToAdd) {
+    public void addCommentToTask(Task taskToAddComment, CommentImpl commentToAdd) {
+        taskToAddComment.addComment(commentToAdd);
 
     }
 
     @Override
-    public void removeCommentToTask(Task taskToRemoveComment, Comment commentToRemove) {
+    public void removeCommentToTask(Task taskToRemoveComment, CommentImpl commentToRemove) {
+        if (!taskToRemoveComment.getComment().contains(commentToRemove)){
+            throw new IllegalArgumentException("Task doesn't contain that comment");
+        }
+
 
     }
     //TODO
-    public void addActivity(String activity) {
+    public void addActivity(History activity) {
         history.add(activity);
     }
 
     @Override
     public String toString() {
         return String.format("Member name: %s", getName());
+    }
+
+    private void setName(String name) {
+        ValidationHelpers.ValidateIntRange(
+                name.length(), MEMBER_NAME_MIN_LENGTH, MEMBER_NAME_MAX_LENGTH, INVALID_MEMBER_NAME);
+        this.name = name;
     }
 }
 

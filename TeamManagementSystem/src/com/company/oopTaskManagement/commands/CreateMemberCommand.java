@@ -23,7 +23,6 @@ public class CreateMemberCommand extends BaseCommand{
         return registerUser(username);
 
     }
-
     private String registerUser(String username) {
         Member member = getTaskManagementRepository().createMember(username);
         getTaskManagementRepository().addMember(member);

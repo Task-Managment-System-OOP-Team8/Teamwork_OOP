@@ -6,6 +6,7 @@ import com.company.oopTaskManagement.teams.MemberImpl;
 import com.company.oopTaskManagement.teams.contracts.Member;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShowAllMembersCommand extends BaseCommand{
 
@@ -27,10 +28,9 @@ public class ShowAllMembersCommand extends BaseCommand{
         if (members.isEmpty()) {
             throw new IllegalArgumentException(NO_REGISTERED_MEMBERS);
         }
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Member member : members) {
-            stringBuilder.append(member.toString());
-        }
-        return stringBuilder.toString();
+
+        return members.stream()
+                .map(Member::toString)
+                .collect(Collectors.joining());
     }
 }

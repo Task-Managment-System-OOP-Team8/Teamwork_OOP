@@ -11,7 +11,6 @@ public class ValidationHelpers {
             throw new IllegalArgumentException(errorMessage);
         }
     }
-
     public static void validateArgumentsCount(List<String> list, int expectedNumberOfParameters) {
         if (list.size() < expectedNumberOfParameters) {
             throw new IllegalArgumentException(
