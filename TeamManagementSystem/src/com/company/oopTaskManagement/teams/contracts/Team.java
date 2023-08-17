@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public interface Team extends Printable {
 
     String getName();
-    ArrayList<MemberImpl> getMembers();
-    ArrayList<BoardImpl> getBoards();
+    ArrayList<Member> getMembers();
+    ArrayList<Board> getBoards();
 
-    void addMembers(MemberImpl member);
-    void addBoard(BoardImpl board);
+    void addMembers(Member member);
+    void addBoard(Board board);
 }

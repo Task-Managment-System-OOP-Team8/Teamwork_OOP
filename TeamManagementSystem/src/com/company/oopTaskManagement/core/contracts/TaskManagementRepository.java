@@ -1,6 +1,6 @@
 package com.company.oopTaskManagement.core.contracts;
 
-import com.company.oopTaskManagement.tasks.Comment;
+import com.company.oopTaskManagement.tasks.CommentImpl;
 import com.company.oopTaskManagement.tasks.History;
 import com.company.oopTaskManagement.tasks.models.BugImpl;
 import com.company.oopTaskManagement.tasks.models.FeedbackImpl;
@@ -40,7 +40,7 @@ public interface TaskManagementRepository {
 
     FeedbackImpl createFeedback(String title, String description, int rating);
 
-    Comment createComment(String author, String message);
+    CommentImpl createComment(String author, String message);
 
     MemberImpl addMember(MemberImpl memberToAdd);
     History addActivity(History activityToAdd);

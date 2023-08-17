@@ -6,6 +6,7 @@ import com.company.oopTaskManagement.tasks.contracts.Task;
 import com.company.oopTaskManagement.tasks.History;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class TaskImpl implements Task {
     private static final int TITLE_MIN_LENGTH = 10;
@@ -34,11 +35,16 @@ public abstract class TaskImpl implements Task {
         this.history = new ArrayList<>();
 
     }
-    @Override
-    public abstract String getTitle();
 
     @Override
-    public abstract String getDescription();
+    public String getTitle() {
+        return title;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
 
     @Override
     public int getId() {
@@ -46,10 +52,21 @@ public abstract class TaskImpl implements Task {
     }
 
     @Override
-    public void addComment(com.company.oopTaskManagement.tasks.contracts.Comment comment) {
+    public List<Comment> getComment() {
+        return new ArrayList<>(comments);
+    }
+
+    @Override
+    public List<History> getHistory() {
+        return new ArrayList<>(history);
+    }
+
+    @Override
+    public void addComment(Comment comment) {
         comments.add(comment);
 
     }
+
     //TODO - Коментарите още не са ок, историята също
     public void addHistory(String input) {
         history.add(new History(input));
@@ -61,12 +78,6 @@ public abstract class TaskImpl implements Task {
         }
     }
 
-    @Override
-    public String toString() {
-        return String.format("Task id: %s%nTask title: %s%nTask description: %s%n ", id, title, description);
-
-    }
-
     private void setTitle(String title) {
         ValidationHelpers.ValidateIntRange(title.length(), TITLE_MIN_LENGTH, TITLE_MAX_LENGTH, INVALID_TITLE);
         this.title = title;
@@ -76,6 +87,16 @@ public abstract class TaskImpl implements Task {
     private void setDescription(String description) {
         ValidationHelpers.ValidateIntRange(description.length(), DESCRIPTION_MIN_LENGTH, DESCRIPTION_MAX_LENGTH, INVALID_DESCRIPTION);
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Task id: %s\n" +
+                        "Title: %s\n" +
+                        "Description: %s\n" +
+                        "Comments: %s\n",
+                getId(), getTitle(), getDescription(), getComment());
+
     }
 
 

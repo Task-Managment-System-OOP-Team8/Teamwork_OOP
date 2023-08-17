@@ -16,15 +16,19 @@ public class ShowAllTeamBoardsCommand extends BaseCommand{
     public ShowAllTeamBoardsCommand(TaskManagementRepository taskManagementRepository) {
         super(taskManagementRepository);
     }
+
+    //todo- грешка в toString
     @Override
-    protected String executeCommand(List<String> parameters) {
-        ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_PARAMETERS);
-        String teamName = parameters.get(0);
+    public String executeCommand(List<String> parameters) {
+//        ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_PARAMETERS);
+//        String teamName = parameters.get(0);
+//
+//        TeamImpl team = getTaskManagementRepository().findTeamByName(teamName);
+//
+//        return team.getBoards().stream()
+//                .map(BoardImpl::toString)
+//                .collect(Collectors.joining());
 
-        TeamImpl team = getTaskManagementRepository().findTeamByName(teamName);
-
-        return team.getBoards().stream()
-                .map(BoardImpl::toString)
-                .collect(Collectors.joining());
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 package com.company.oopTaskManagement.teams;
 
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
+import com.company.oopTaskManagement.tasks.History;
 import com.company.oopTaskManagement.tasks.contracts.Task;
 import com.company.oopTaskManagement.teams.contracts.Board;
 
@@ -13,7 +14,7 @@ public class BoardImpl implements Board {
             "Board name must be between %d and %d symbols", BOARD_NAME_MIN_LENGTH, BOARD_NAME_MAX_LENGTH);
     private String name;
     private ArrayList<Task> tasks;
-    private ArrayList<String> history;
+    private ArrayList<History> history;
 
     public BoardImpl(String name) {
         setName(name);
@@ -32,22 +33,22 @@ public class BoardImpl implements Board {
     }
 
     @Override
-    public ArrayList<String> getHistory() {
+    public ArrayList<History> getHistory() {
         return new ArrayList<>(history);
     }
 
     @Override
     public void addTask(Task task) {
         tasks.add(task);
-
     }
 
     @Override
     public void removeTask(Task task) {
         tasks.remove(task);
     }
+
     @Override
-    public void addActivity(String activity) {
+    public void addActivity(History activity) {
         history.add(activity);
     }
 
@@ -56,4 +57,9 @@ public class BoardImpl implements Board {
                 name.length(), BOARD_NAME_MIN_LENGTH, BOARD_NAME_MAX_LENGTH, INVALID_BOARD_NAME);
         this.name = name;
     }
+
+@Override
+    public String toString(){
+        return String.format("Board name: %s\n",getName());
+}
 }

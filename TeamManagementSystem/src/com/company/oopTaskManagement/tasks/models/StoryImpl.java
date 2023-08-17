@@ -1,13 +1,13 @@
 package com.company.oopTaskManagement.tasks.models;
 
+import com.company.oopTaskManagement.tasks.contracts.Comment;
 import com.company.oopTaskManagement.tasks.contracts.Story;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SizeEnums;
 import com.company.oopTaskManagement.tasks.models.enums.StoryEnums;
-import com.company.oopTaskManagement.tasks.Comment;
 
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class StoryImpl extends TaskImpl implements Story {
 
@@ -23,9 +23,8 @@ public class StoryImpl extends TaskImpl implements Story {
         this.size=size;
         this.status = StoryEnums.NOT_DONE;
        setAssignee(assignee);
-
     }
-    //TODO
+
     @Override
     public PriorityEnums getPriority() {
         return priority;
@@ -40,23 +39,6 @@ public class StoryImpl extends TaskImpl implements Story {
     public StoryEnums getStatus() {
         return status;
     }
-
-    //TODO
-
-    public String getAuthor() {
-        return null;
-    }
-
-    @Override
-    public String getTitle() {
-        return title;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
-    }
-
     @Override
     public SizeEnums getSize() {
         return size;
@@ -64,11 +46,6 @@ public class StoryImpl extends TaskImpl implements Story {
 //TODO
     @Override
     public String getAsString() {
-        return null;
-    }
-
-    @Override
-    public ArrayList<Comment> getComment() {
         return null;
     }
 

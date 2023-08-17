@@ -1,7 +1,7 @@
 package com.company.oopTaskManagement.core;
 
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
-import com.company.oopTaskManagement.tasks.Comment;
+import com.company.oopTaskManagement.tasks.CommentImpl;
 import com.company.oopTaskManagement.tasks.History;
 import com.company.oopTaskManagement.tasks.models.BugImpl;
 import com.company.oopTaskManagement.tasks.models.FeedbackImpl;
@@ -33,7 +33,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     private List<BugImpl> bugs;
     private List<StoryImpl> stories;
     private List<FeedbackImpl> feedbacks;
-    private List<Comment> comments;
+    private List<CommentImpl> comments;
 
     private List<TaskImpl> task;
 
@@ -175,8 +175,8 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public Comment createComment(String author, String message) {
-        Comment comment = new Comment(author, message);
+    public CommentImpl createComment(String author, String message) {
+        CommentImpl comment = new CommentImpl(author, message);
         this.comments.add(comment);
         return comment;
     }

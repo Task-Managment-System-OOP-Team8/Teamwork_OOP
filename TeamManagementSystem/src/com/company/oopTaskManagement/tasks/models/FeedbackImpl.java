@@ -2,9 +2,7 @@ package com.company.oopTaskManagement.tasks.models;
 
 import com.company.oopTaskManagement.tasks.contracts.Feedback;
 import com.company.oopTaskManagement.tasks.models.enums.FeedbackEnums;
-import com.company.oopTaskManagement.tasks.Comment;
 
-import java.util.ArrayList;
 
 public class  FeedbackImpl extends TaskImpl implements Feedback {
 
@@ -19,9 +17,6 @@ public class  FeedbackImpl extends TaskImpl implements Feedback {
 
     }
 
-    public ArrayList<Comment> getComments() {
-        return new ArrayList<>();
-    }
 
     @Override
     public int getRating() {
@@ -33,31 +28,14 @@ public class  FeedbackImpl extends TaskImpl implements Feedback {
         return status;
     }
 
-    //TODO
 
-    public String getAuthor() {
-        return null;
-    }
-
-    @Override
-    public String getTitle() {
-        return title;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
-    }
-
+//todo- print method
     @Override
     public String getAsString() {
         return null;
     }
 
-    @Override
-    public ArrayList<Comment> getComment() {
-        return null;
-    }
+
     private void setRating(int rating) {
         this.rating = rating;
     }

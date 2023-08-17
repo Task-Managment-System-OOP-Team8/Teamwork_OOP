@@ -1,10 +1,10 @@
 package com.company.oopTaskManagement.tasks.models;
 
 import com.company.oopTaskManagement.tasks.contracts.Bug;
+import com.company.oopTaskManagement.tasks.contracts.Comment;
 import com.company.oopTaskManagement.tasks.models.enums.BugEnums;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
-import com.company.oopTaskManagement.tasks.Comment;
 
 
 import java.util.ArrayList;
@@ -24,8 +24,8 @@ public class BugImpl extends TaskImpl implements Bug {
                    PriorityEnums priority, SeverityEnums severity,String assignee) {
         super(title, description);
         this.steps = new ArrayList<>();
-        this.priority=priority;
-        this.severity=severity;
+        setPriority(priority);
+        setSeverity(severity);
        this.status = BugEnums.ACTIVE;
       setAssignee(assignee);
 
@@ -57,8 +57,8 @@ public class BugImpl extends TaskImpl implements Bug {
     }
     //TODO - Comments!
     @Override
-    public ArrayList<Comment> getComment() {
-        return new ArrayList<>();
+    public List<Comment> getComment() {
+        return new ArrayList<>(comments);
     }
 
     @Override
@@ -76,16 +76,6 @@ public class BugImpl extends TaskImpl implements Bug {
         return assignee;
     }
 
-
-    @Override
-    public String getTitle() {
-        return title;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
-    }
 
     private void setSteps(ArrayList<String> steps) {
         this.steps = steps;
