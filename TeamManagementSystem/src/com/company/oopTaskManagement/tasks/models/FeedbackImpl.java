@@ -1,12 +1,11 @@
 package com.company.oopTaskManagement.tasks.models;
 
-import com.company.oopTaskManagement.tasks.contracts.Feedback;
 import com.company.oopTaskManagement.tasks.models.enums.FeedbackEnums;
 import com.company.oopTaskManagement.tasks.Comment;
 
 import java.util.ArrayList;
 
-public class  FeedbackImpl extends TaskImpl implements Feedback {
+public class FeedbackImpl extends TaskImpl implements com.company.oopTaskManagement.tasks.contracts.Feedback {
 
     public static final int DESCRIPTION_MIN_LENGTH = 10;
     public static final int DESCRIPTION_MAX_LENGTH = 500;

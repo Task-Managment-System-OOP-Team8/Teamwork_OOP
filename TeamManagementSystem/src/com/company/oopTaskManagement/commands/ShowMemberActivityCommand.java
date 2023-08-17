@@ -3,6 +3,7 @@ package com.company.oopTaskManagement.commands;
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.teams.MemberImpl;
+import com.company.oopTaskManagement.teams.contracts.Member;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ import java.util.List;
         protected String executeCommand(List<String> parameters) {
             ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS);
             String username = parameters.get(0);
-            MemberImpl member = getTaskManagementRepository().findMemberByUsername(username);
+            Member member = getTaskManagementRepository().findMemberByUsername(username);
             if (member.getHistory().isEmpty()){
                 return String.format(NO_ACTIVITY_FOR_MEMBER, member.getName());
             }

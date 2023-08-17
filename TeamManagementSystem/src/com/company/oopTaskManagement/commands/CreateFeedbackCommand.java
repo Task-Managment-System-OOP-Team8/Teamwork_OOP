@@ -2,6 +2,7 @@ package com.company.oopTaskManagement.commands;
 
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
+import com.company.oopTaskManagement.tasks.contracts.Feedback;
 import com.company.oopTaskManagement.tasks.models.FeedbackImpl;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class CreateFeedbackCommand extends BaseCommand {
     }
 
     private String createFeedback(String title, String description, int rating) {
-        FeedbackImpl feedback = getTaskManagementRepository().createFeedback(title, description, rating);
+        Feedback feedback = getTaskManagementRepository().createFeedback(title, description, rating);
         getTaskManagementRepository().addFeedback(feedback);
         return String.format(FEEDBACK_S_CREATED_SUCCESSFULLY, title);
     }

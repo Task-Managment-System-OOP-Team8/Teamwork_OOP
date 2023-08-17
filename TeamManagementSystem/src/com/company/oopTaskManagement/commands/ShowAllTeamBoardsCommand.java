@@ -4,6 +4,8 @@ import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.teams.BoardImpl;
 import com.company.oopTaskManagement.teams.TeamImpl;
+import com.company.oopTaskManagement.teams.contracts.Board;
+import com.company.oopTaskManagement.teams.contracts.Team;
 
 import java.util.List;
 
@@ -21,10 +23,10 @@ public class ShowAllTeamBoardsCommand extends BaseCommand{
         ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_PARAMETERS);
         String teamName = parameters.get(0);
 
-        TeamImpl team = getTaskManagementRepository().findTeamByName(teamName);
-        List<BoardImpl> teamBoards = team.getBoards();
+        Team team = getTaskManagementRepository().findTeamByName(teamName);
+        List<Board> teamBoards = team.getBoards();
         StringBuilder sb = new StringBuilder();
-        for (BoardImpl board : teamBoards) {
+        for (Board board : teamBoards) {
             sb.append(board.toString());
         }
         return sb.toString();

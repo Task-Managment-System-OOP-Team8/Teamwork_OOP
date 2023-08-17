@@ -3,6 +3,7 @@ package com.company.oopTaskManagement.commands;
 import com.company.oopTaskManagement.Utils.ParsingHelpers;
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
+import com.company.oopTaskManagement.tasks.contracts.Story;
 import com.company.oopTaskManagement.tasks.models.StoryImpl;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SizeEnums;
@@ -30,7 +31,7 @@ public class CreateStoryCommand extends BaseCommand {
     }
 
     private String createStory(String title, String description, PriorityEnums priority, SizeEnums size, String assignee) {
-        StoryImpl story = getTaskManagementRepository().createStory(title, description, priority, size, assignee);
+        Story story = getTaskManagementRepository().createStory(title, description, priority, size, assignee);
         getTaskManagementRepository().addStory(story);
         return String.format("Story %s created successfully", title);
     }

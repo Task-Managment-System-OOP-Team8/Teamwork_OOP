@@ -2,73 +2,72 @@ package com.company.oopTaskManagement.core.contracts;
 
 import com.company.oopTaskManagement.tasks.Comment;
 import com.company.oopTaskManagement.tasks.History;
-import com.company.oopTaskManagement.tasks.models.BugImpl;
-import com.company.oopTaskManagement.tasks.models.FeedbackImpl;
-import com.company.oopTaskManagement.tasks.models.StoryImpl;
-import com.company.oopTaskManagement.tasks.models.TaskImpl;
+import com.company.oopTaskManagement.tasks.contracts.Bug;
+import com.company.oopTaskManagement.tasks.contracts.Feedback;
+import com.company.oopTaskManagement.tasks.contracts.Story;
+import com.company.oopTaskManagement.tasks.contracts.Task;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SizeEnums;
-import tasks.models.enums.*;
-import com.company.oopTaskManagement.teams.BoardImpl;
-import com.company.oopTaskManagement.teams.MemberImpl;
-import com.company.oopTaskManagement.teams.TeamImpl;
+import com.company.oopTaskManagement.teams.contracts.Board;
+import com.company.oopTaskManagement.teams.contracts.Member;
+import com.company.oopTaskManagement.teams.contracts.Team;
 
 import java.util.List;
 
 public interface TaskManagementRepository {
 
-    List<MemberImpl> getMembers();
+    List<Member> getMembers();
 
-    List<TeamImpl> getTeams();
+    List<Team> getTeams();
 
-    List<BoardImpl> getBoards();
+    List<Board> getBoards();
 
     List<History> getHistory();
 
 
-    MemberImpl createMember(String name);
+    Member createMember(String name);
 
-    TeamImpl createTeam(String name);
+    Team createTeam(String name);
 
-    BoardImpl createBoard(String boardName);
+    Board createBoard(String boardName);
 
-    BugImpl createBug(String title, String description, PriorityEnums priority,
+    Bug createBug(String title, String description, PriorityEnums priority,
                       SeverityEnums severity, String assignee);  //?
 
-    StoryImpl createStory(String title, String description, PriorityEnums priority, SizeEnums size, String assignee);  //?
+    Story createStory(String title, String description, PriorityEnums priority, SizeEnums size, String assignee);  //?
 
-    FeedbackImpl createFeedback(String title, String description, int rating);
+    Feedback createFeedback(String title, String description, int rating);
 
     Comment createComment(String author, String message);
 
-    MemberImpl addMember(MemberImpl memberToAdd);
+    Member addMember(Member memberToAdd);
     History addActivity(History activityToAdd);
 
-    BoardImpl addBoard(BoardImpl boardName);
+    Board addBoard(Board boardName);
 
-    BugImpl addBug(BugImpl bugTitle);
+    Bug addBug(Bug bugTitle);
 
-    StoryImpl addStory(StoryImpl storyTitle);
+    Story addStory(Story storyTitle);
 
-    TeamImpl addTeam(TeamImpl teamName);
+    Team addTeam(Team teamName);
 
-    FeedbackImpl addFeedback(FeedbackImpl feedbackTitle);
+    Feedback addFeedback(Feedback feedbackTitle);
 
-    MemberImpl findMemberByUsername(String username);
+    Member findMemberByUsername(String username);
 
-    BoardImpl findBoardByName(String boardName);
+    Board findBoardByName(String boardName);
 
-    List<BugImpl> getBugs();
+    List<Bug> getBugs();
 
-    List<StoryImpl> getStories ();
+    List<Story> getStories ();
 
-    List<FeedbackImpl> getFeedbacks();
-    List<TaskImpl> getTasks();
+    List<Feedback> getFeedbacks();
+    List<Task> getTasks();
 
-   TaskImpl findTaskByName(String taskName);
+   Task findTaskByName(String taskName);
 
-   TeamImpl findTeamByName(String teamName);
+   Team findTeamByName(String teamName);
 
 
 

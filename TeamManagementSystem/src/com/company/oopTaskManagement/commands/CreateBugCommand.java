@@ -3,6 +3,7 @@ package com.company.oopTaskManagement.commands;
 import com.company.oopTaskManagement.Utils.ParsingHelpers;
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
+import com.company.oopTaskManagement.tasks.contracts.Bug;
 import com.company.oopTaskManagement.tasks.models.BugImpl;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
@@ -30,7 +31,7 @@ public class CreateBugCommand extends BaseCommand {
     }
     private String createBug(String bugTitle, String description, PriorityEnums priority,
                              SeverityEnums severity, String assignee) {
-        BugImpl bug = getTaskManagementRepository().createBug(bugTitle, description, priority, severity, assignee);
+        Bug bug = getTaskManagementRepository().createBug(bugTitle, description, priority, severity, assignee);
         getTaskManagementRepository().addBug(bug);
         return String.format(BUG_S_CREATED_SUCCESSFULLY, bugTitle);
     }

@@ -3,6 +3,8 @@ package com.company.oopTaskManagement.commands;
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.teams.MemberImpl;
+import com.company.oopTaskManagement.teams.contracts.Member;
+
 import java.util.List;
 
 public class ShowAllMembersCommand extends BaseCommand{
@@ -21,12 +23,12 @@ public class ShowAllMembersCommand extends BaseCommand{
     }
 
     public String showAllMembersCommand() {
-        List<MemberImpl> members = getTaskManagementRepository().getMembers();
+        List<Member> members = getTaskManagementRepository().getMembers();
         if (members.isEmpty()) {
             throw new IllegalArgumentException(NO_REGISTERED_MEMBERS);
         }
         StringBuilder stringBuilder = new StringBuilder();
-        for (MemberImpl member : members) {
+        for (Member member : members) {
             stringBuilder.append(member.toString());
         }
         return stringBuilder.toString();

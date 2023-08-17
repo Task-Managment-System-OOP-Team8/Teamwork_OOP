@@ -2,8 +2,7 @@ package com.company.oopTaskManagement.commands;
 
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
-import com.company.oopTaskManagement.teams.BoardImpl;
-
+import com.company.oopTaskManagement.teams.contracts.Board;
 import java.util.List;
 
 public class ShowBoardsActivityCommand extends BaseCommand {
@@ -18,7 +17,7 @@ public class ShowBoardsActivityCommand extends BaseCommand {
     protected String executeCommand(List<String> parameters) {
         ValidationHelpers.validateArgumentsCount(parameters,EXPECTED_NUMBER_OF_ARGUMENTS);
         String boardName = parameters.get(0);
-        BoardImpl board = getTaskManagementRepository().findBoardByName(boardName);
+        Board board = getTaskManagementRepository().findBoardByName(boardName);
         if (board.getName().isEmpty()){
             return String.format(NO_VALID_BOARD_NAME,board.getName());
         }

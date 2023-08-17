@@ -3,6 +3,8 @@ package com.company.oopTaskManagement.commands;
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.teams.BoardImpl;
+import com.company.oopTaskManagement.teams.contracts.Board;
+
 import java.util.List;
 
 public class CreateBoardCommand extends BaseCommand {
@@ -23,7 +25,7 @@ public class CreateBoardCommand extends BaseCommand {
 
 
     private String createBoard(String boardName) {
-        BoardImpl board = getTaskManagementRepository().createBoard(boardName);
+        Board board = getTaskManagementRepository().createBoard(boardName);
         getTaskManagementRepository().addBoard(board);
         return String.format("Board %s created successfully", boardName);
     }

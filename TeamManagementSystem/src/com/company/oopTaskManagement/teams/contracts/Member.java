@@ -2,7 +2,6 @@ package com.company.oopTaskManagement.teams.contracts;
 
 import com.company.oopTaskManagement.tasks.Comment;
 import com.company.oopTaskManagement.tasks.contracts.Task;
-
 import java.util.ArrayList;
 
 public interface Member {

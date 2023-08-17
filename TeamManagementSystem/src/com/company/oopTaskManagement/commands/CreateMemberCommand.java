@@ -3,6 +3,8 @@ package com.company.oopTaskManagement.commands;
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.teams.MemberImpl;
+import com.company.oopTaskManagement.teams.contracts.Member;
+
 import java.util.List;
 
 public class CreateMemberCommand extends BaseCommand{
@@ -23,7 +25,7 @@ public class CreateMemberCommand extends BaseCommand{
     }
 
     private String registerUser(String username) {
-        MemberImpl member = getTaskManagementRepository().createMember(username);
+        Member member = getTaskManagementRepository().createMember(username);
         getTaskManagementRepository().addMember(member);
         return String.format(MEMBER_REGISTERED, username);
     }

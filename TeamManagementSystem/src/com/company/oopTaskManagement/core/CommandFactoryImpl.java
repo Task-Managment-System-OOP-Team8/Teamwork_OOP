@@ -4,7 +4,6 @@ import com.company.oopTaskManagement.Utils.ParsingHelpers;
 import com.company.oopTaskManagement.commands.*;
 import com.company.oopTaskManagement.core.contracts.CommandFactory;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
-import commands.*;
 import com.company.oopTaskManagement.commands.Enums.CommmandType;
 import com.company.oopTaskManagement.commands.contracts.Command;
 import com.company.oopTaskManagement.commands.listing.ListBugCommand;
@@ -57,8 +56,8 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ListTaskCommand(taskManagementRepository);
             case ADDCOMMENTTOTASK:
                 return new AddCommentToTaskCommand(taskManagementRepository);
-            case SHOWALLMEMBERSTEAM:
-                return new ShowAllTeamMembersCommand(taskManagementRepository);
+//            case SHOWALLMEMBERSTEAM:
+//                return new ShowAllTeamMembersCommand(taskManagementRepository);
 
 
             default:

@@ -3,6 +3,8 @@ package com.company.oopTaskManagement.core;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.tasks.Comment;
 import com.company.oopTaskManagement.tasks.History;
+import com.company.oopTaskManagement.tasks.contracts.Bug;
+import com.company.oopTaskManagement.tasks.contracts.Story;
 import com.company.oopTaskManagement.tasks.models.BugImpl;
 import com.company.oopTaskManagement.tasks.models.FeedbackImpl;
 import com.company.oopTaskManagement.tasks.models.StoryImpl;
@@ -13,6 +15,9 @@ import com.company.oopTaskManagement.tasks.models.enums.SizeEnums;
 import com.company.oopTaskManagement.teams.BoardImpl;
 import com.company.oopTaskManagement.teams.MemberImpl;
 import com.company.oopTaskManagement.teams.TeamImpl;
+import com.company.oopTaskManagement.teams.contracts.Board;
+import com.company.oopTaskManagement.teams.contracts.Member;
+import com.company.oopTaskManagement.teams.contracts.Team;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +31,12 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String NO_VALID_BOARD_NAME = "There is no board with name: %s";
     public static final String A_TEAM_WITH_S_NAME_DOES_NOT_EXIST = "A team with %s name does not exist.";
     private int nextId;
-    private List<MemberImpl> members;
-    private List<TeamImpl> teams;
-    private List<BoardImpl> boards;
-    private List<BugImpl> bugs;
-    private List<StoryImpl> stories;
-    private List<FeedbackImpl> feedbacks;
+    private List<Member> member;
+    private List<Team> teams;
+    private List<Board> boards;
+    private List<Bug> bugs;
+    private List<Story> stories;
+    private List<com.company.oopTaskManagement.tasks.contracts.Feedback> feedbacks;
     private List<Comment> comments;
 
     private List<TaskImpl> task;
@@ -43,23 +48,23 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         this.feedbacks = new ArrayList<>();
         this.comments = new ArrayList<>();
         this.boards = new ArrayList<>();
-        this.members = new ArrayList<>();
+        this.member = new ArrayList<>();
         this.teams = new ArrayList<>();
         this.task = new ArrayList<>();
     }
 
     @Override
-    public List<MemberImpl> getMembers() {
-        return new ArrayList<>(members);
+    public List<Member> getMembers() {
+        return new ArrayList<>(member);
     }
 
     @Override
-    public List<TeamImpl> getTeams() {
+    public List<Team> getTeams() {
         return new ArrayList<>(teams);
     }
 
     @Override
-    public List<BoardImpl> getBoards() {
+    public List<Board> getBoards() {
         return new ArrayList<>(boards);
     }
 
@@ -69,12 +74,21 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public MemberImpl addMember(MemberImpl memberToAdd) {
-        if (members.contains(memberToAdd)) {
-            throw new IllegalArgumentException(THIS_MEMBER_ALREADY_EXISTS);
+    public Member addMember(Member memberToAdd) { //сравняваме името а не референцията
+//        if (members.contains(memberToAdd)) {
+//            throw new IllegalArgumentException(THIS_MEMBER_ALREADY_EXISTS);
+//        }
+//        members.add(memberToAdd);
+//        return memberToAdd;
+        boolean memberExists =
+       this.member
+               .stream()
+               .anyMatch(member -> member.getName().equalsIgnoreCase(memberToAdd.getName()));
+        if (memberExists) {
+            member.add(memberToAdd);
+            return memberToAdd;
         }
-        members.add(memberToAdd);
-        return memberToAdd;
+        throw new IllegalArgumentException(THIS_MEMBER_ALREADY_EXISTS);
     }
 
     @Override
@@ -83,7 +97,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public BoardImpl addBoard(BoardImpl boardName) {
+    public Board addBoard(Board boardName) {
         if (boards.contains(boardName)) {
             throw new IllegalArgumentException(BOARD_ALREADY_EXISTS);
         }
@@ -92,12 +106,12 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public BugImpl addBug(BugImpl bugTitle) {
+    public Bug addBug(Bug bugTitle) {
         return bugTitle;
     }
 
     @Override
-    public StoryImpl addStory(StoryImpl storyTitle) {
+    public Story addStory(Story storyTitle) {
         return storyTitle;
     }
 
@@ -105,14 +119,13 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public MemberImpl createMember(String name) {
         return new MemberImpl(name);
     }
-
     @Override
     public TeamImpl createTeam(String name) {
         return new TeamImpl(name);
     }
 
     @Override
-    public TeamImpl addTeam(TeamImpl teamName) {
+    public Team addTeam(Team teamName) {
         if (teams.contains(teamName)) {
             throw new IllegalArgumentException(THIS_TEAM_ALREADY_EXISTS);
         }
@@ -131,9 +144,9 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     @Override
     public MemberImpl findMemberByUsername(String username) {
-        for (MemberImpl member : members) {
-            if (member.getName().equalsIgnoreCase(username)) {
-                return member;
+        for (MemberImpl memberImpl : member) {
+            if (memberImpl.getName().equalsIgnoreCase(username)) {
+                return memberImpl;
             }
         }
         throw new IllegalArgumentException(String.format(NO_VALID_USERNAME, username));
