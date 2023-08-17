@@ -46,7 +46,14 @@ public class StoryImpl extends TaskImpl implements Story {
 //TODO
     @Override
     public String getAsString() {
-        return null;
+        return String.format("""
+                Title: %s
+                Description: %s
+                Priority: %s
+                Size: %s
+                Status: %s
+                Assignee: %s
+                """, title, description, priority, size, status, assignee);
     }
 
     private void setAssignee(String assignee) {

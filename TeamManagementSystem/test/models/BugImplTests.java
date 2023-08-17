@@ -6,11 +6,15 @@ import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
 import org.junit.jupiter.api.Assertions;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import utils.TestUtilities;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class BugImplTests {
