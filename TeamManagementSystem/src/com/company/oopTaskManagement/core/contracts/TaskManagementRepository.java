@@ -1,11 +1,7 @@
 package com.company.oopTaskManagement.core.contracts;
 
-import com.company.oopTaskManagement.tasks.Comment;
 import com.company.oopTaskManagement.tasks.History;
-import com.company.oopTaskManagement.tasks.contracts.Bug;
-import com.company.oopTaskManagement.tasks.contracts.Feedback;
-import com.company.oopTaskManagement.tasks.contracts.Story;
-import com.company.oopTaskManagement.tasks.contracts.Task;
+import com.company.oopTaskManagement.tasks.contracts.*;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SizeEnums;

@@ -2,9 +2,7 @@ package com.company.oopTaskManagement.commands;
 
 import com.company.oopTaskManagement.commands.contracts.Command;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
-
 import java.util.List;
-
 public abstract class BaseCommand implements Command {
 
   private TaskManagementRepository taskManagementRepository;

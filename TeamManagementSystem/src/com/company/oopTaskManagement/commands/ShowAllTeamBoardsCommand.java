@@ -2,12 +2,9 @@ package com.company.oopTaskManagement.commands;
 
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
-import com.company.oopTaskManagement.teams.BoardImpl;
-import com.company.oopTaskManagement.teams.TeamImpl;
 import com.company.oopTaskManagement.teams.contracts.Board;
 import com.company.oopTaskManagement.teams.contracts.Team;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ShowAllTeamBoardsCommand extends BaseCommand{
 

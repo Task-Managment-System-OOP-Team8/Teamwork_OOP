@@ -3,8 +3,6 @@ package com.company.oopTaskManagement.commands;
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.tasks.contracts.Feedback;
-import com.company.oopTaskManagement.tasks.models.FeedbackImpl;
-
 import java.util.List;
 
 public class CreateFeedbackCommand extends BaseCommand {

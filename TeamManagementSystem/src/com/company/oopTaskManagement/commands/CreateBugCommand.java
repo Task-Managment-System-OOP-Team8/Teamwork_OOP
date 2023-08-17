@@ -4,10 +4,8 @@ import com.company.oopTaskManagement.Utils.ParsingHelpers;
 import com.company.oopTaskManagement.Utils.ValidationHelpers;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.tasks.contracts.Bug;
-import com.company.oopTaskManagement.tasks.models.BugImpl;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
-
 import java.util.Collections;
 import java.util.List;
 
