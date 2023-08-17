@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class CreateBugCommand extends BaseCommand {
-    public static final String BUG_S_CREATED_SUCCESSFULLY = "Bug %s created successfully";
+    public static final String BUG_CREATED_SUCCESSFULLY = "Bug %s created successfully";
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 6;
 
     public CreateBugCommand(TaskManagementRepository taskManagementRepository) {
@@ -33,7 +33,7 @@ public class CreateBugCommand extends BaseCommand {
                              SeverityEnums severity, String assignee) {
         Bug bug = getTaskManagementRepository().createBug(bugTitle, description,steps, priority, severity, assignee);
         getTaskManagementRepository().addBug(bug);
-        return String.format(BUG_S_CREATED_SUCCESSFULLY, bugTitle);
+        return String.format(BUG_CREATED_SUCCESSFULLY, bugTitle);
     }
 }
 

@@ -8,7 +8,6 @@ import com.company.oopTaskManagement.tasks.models.enums.SizeEnums;
 import com.company.oopTaskManagement.teams.contracts.Board;
 import com.company.oopTaskManagement.teams.contracts.Member;
 import com.company.oopTaskManagement.teams.contracts.Team;
-
 import java.util.List;
 
 public interface TaskManagementRepository {
@@ -28,8 +27,8 @@ public interface TaskManagementRepository {
 
     Board createBoard(String boardName);
 
-    Bug createBug(String title, String description, PriorityEnums priority,
-                      SeverityEnums severity, String assignee);  //?
+    Bug createBug(String title, String description,List<String> steps, PriorityEnums priority,
+                      SeverityEnums severity, String assignee);
 
     Story createStory(String title, String description, PriorityEnums priority, SizeEnums size, String assignee);  //?
 

@@ -1,14 +1,12 @@
 package com.company.oopTaskManagement.core;
 
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
-import com.company.oopTaskManagement.tasks.Comment;
+import com.company.oopTaskManagement.tasks.CommentImpl;
 import com.company.oopTaskManagement.tasks.History;
-import com.company.oopTaskManagement.tasks.contracts.Bug;
-import com.company.oopTaskManagement.tasks.contracts.Story;
+import com.company.oopTaskManagement.tasks.contracts.*;
 import com.company.oopTaskManagement.tasks.models.BugImpl;
 import com.company.oopTaskManagement.tasks.models.FeedbackImpl;
 import com.company.oopTaskManagement.tasks.models.StoryImpl;
-import com.company.oopTaskManagement.tasks.models.TaskImpl;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SeverityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SizeEnums;
@@ -29,8 +27,8 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String FEEDBACK_ALREADY_EXISTS = "Feedback already exists";
     public static final String NO_VALID_USERNAME = "There is no member with username: %s";
     public static final String NO_VALID_BOARD_NAME = "There is no board with name: %s";
-    public static final String A_TEAM_WITH_S_NAME_DOES_NOT_EXIST = "A team with %s name does not exist.";
-    public static final String TASK_WITH_NAME_S_DOESN_T_EXIST = "Task with name %s doesn't exist.";
+    public static final String TEAM_DOES_NOT_EXIST = "A team with %s name does not exist.";
+    public static final String TASK_DOES_NOT_EXIST = "Task with name %s doesn't exist.";
     private int nextId;
     private List<Member> member;
     private List<Team> teams;
@@ -40,18 +38,18 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     private List<com.company.oopTaskManagement.tasks.contracts.Feedback> feedbacks;
     private List<Comment> comments;
 
-    private List<TaskImpl> task;
+    private List<Task> task;
 
     public TaskManagementRepositoryImpl() {
         nextId = 1;
-        this.bugs = new ArrayList<>();
-        this.stories = new ArrayList<>();
-        this.feedbacks = new ArrayList<>();
-        this.comments = new ArrayList<>();
-        this.boards = new ArrayList<>();
-        this.member = new ArrayList<>();
-        this.teams = new ArrayList<>();
-        this.task = new ArrayList<>();
+        this.bugs = new ArrayList<Bug>();
+        this.stories = new ArrayList<Story>();
+        this.feedbacks = new ArrayList<Feedback>();
+        this.comments = new ArrayList<Comment>();
+        this.boards = new ArrayList<Board>();
+        this.member = new ArrayList<Member>();
+        this.teams = new ArrayList<Team>();
+        this.task = new ArrayList<Task>();
     }
 
     @Override
@@ -117,12 +115,12 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public MemberImpl createMember(String name) {
+    public Member createMember(String name) {
         return new MemberImpl(name);
     }
 
     @Override
-    public TeamImpl createTeam(String name) {
+    public Team createTeam(String name) {
         return new TeamImpl(name);
     }
 
@@ -136,7 +134,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public FeedbackImpl addFeedback(FeedbackImpl feedbackTitle) {
+    public Feedback addFeedback(Feedback feedbackTitle) {
         if (feedbacks.contains(feedbackTitle)) {
             throw new IllegalArgumentException(FEEDBACK_ALREADY_EXISTS);
         }
@@ -145,15 +143,15 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public MemberImpl findMemberByUsername(String username) {
-        return members.stream()
+    public Member findMemberByUsername(String username) {
+        return member.stream()
                 .filter(member -> member.getName().equalsIgnoreCase(username))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(String.format(NO_VALID_USERNAME, username)));
     }
 
     @Override
-    public BoardImpl findBoardByName(String boardName) {
+    public Board findBoardByName(String boardName) {
         return boards.stream()
                 .filter(board -> board.getName().equalsIgnoreCase(boardName))
                 .findFirst()
@@ -161,76 +159,76 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public BoardImpl createBoard(String boardName) {
+    public Board createBoard(String boardName) {
         return new BoardImpl(boardName);
     }
 
     @Override
-    public BugImpl createBug(String title, String description, PriorityEnums priority,
+    public Bug createBug(String title, String description,List<String> steps, PriorityEnums priority,
                              SeverityEnums severity, String assignee) {
-        BugImpl bug = new BugImpl(title, description, priority, severity, assignee);
+        Bug bug = new BugImpl(title, description,steps, priority, severity, assignee);
         this.bugs.add(bug);
         return bug;
     }
 
     @Override
-    public StoryImpl createStory(String title, String description, PriorityEnums priority,
+    public Story createStory(String title, String description, PriorityEnums priority,
                                  SizeEnums size, String assignee) {
-        StoryImpl story = new StoryImpl(title, description, priority, size, assignee);
+        Story story = new StoryImpl(title, description, priority, size, assignee);
         this.stories.add(story);
         return story;
     }
 
     @Override
-    public FeedbackImpl createFeedback(String title, String description, int rating) {
-        FeedbackImpl feedback = new FeedbackImpl(title, description, rating);
+    public Feedback createFeedback(String title, String description, int rating) {
+        Feedback feedback = new FeedbackImpl(title, description, rating);
         this.feedbacks.add(feedback);
         return feedback;
     }
 
     @Override
     public Comment createComment(String author, String message) {
-        Comment comment = new Comment(author, message);
+        Comment comment = new CommentImpl(author, message);
         this.comments.add(comment);
         return comment;
     }
 
     @Override
-    public List<BugImpl> getBugs() {
+    public List<Bug> getBugs() {
         return new ArrayList<>(bugs);
     }
 
     @Override
-    public List<StoryImpl> getStories() {
+    public List<Story> getStories() {
         return new ArrayList<>(stories);
     }
 
     @Override
-    public List<FeedbackImpl> getFeedbacks() {
+    public List<Feedback> getFeedbacks() {
         return new ArrayList<>(feedbacks);
     }
 
     //create history
     @Override
-    public List<TaskImpl> getTasks() {
+    public List<Task> getTasks() {
         return new ArrayList<>(task);
     }
 
 
     @Override
-    public TaskImpl findTaskByName(String taskName) {
+    public Task findTaskByName(String taskName) {
         return getTasks().stream()
                 .filter(task -> task.getTitle().equalsIgnoreCase(taskName))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(String.format(TASK_WITH_NAME_S_DOESN_T_EXIST, taskName)));
+                .orElseThrow(() -> new IllegalArgumentException(String.format(TASK_DOES_NOT_EXIST, taskName)));
     }
 
     @Override
-    public TeamImpl findTeamByName(String teamName) {
+    public Team findTeamByName(String teamName) {
         return teams.stream()
                 .filter(team -> team.getName().equalsIgnoreCase(teamName))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(String.format(A_TEAM_WITH_S_NAME_DOES_NOT_EXIST, teamName)));
+                .orElseThrow(() -> new IllegalArgumentException(String.format(TEAM_DOES_NOT_EXIST, teamName)));
     }
 
 }
