@@ -87,6 +87,5 @@ public class BugImpl extends TaskImpl implements Bug {
     private void setPriority(PriorityEnums priority) {
         this.priority = priority;
     }
-//TODO
 
 }

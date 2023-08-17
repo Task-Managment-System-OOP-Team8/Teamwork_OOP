@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TeamManagementSystem/TeamManagementSystem.iml" filepath="$PROJECT_DIR$/TeamManagementSystem/TeamManagementSystem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/Teamwork.iml" filepath="$PROJECT_DIR$/.idea/Teamwork.iml" />
     </modules>
   </component>
 </project>

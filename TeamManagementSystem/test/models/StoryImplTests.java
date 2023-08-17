@@ -1,6 +1,6 @@
 package models;
 
-import com.company.oopTaskManagement.tasks.models.BugImpl;
+
 import com.company.oopTaskManagement.tasks.models.StoryImpl;
 import com.company.oopTaskManagement.tasks.models.enums.PriorityEnums;
 import com.company.oopTaskManagement.tasks.models.enums.SizeEnums;
@@ -8,8 +8,6 @@ import com.company.oopTaskManagement.tasks.models.enums.StoryEnums;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import utils.TestUtilities;
-
-import static org.junit.Assert.assertEquals;
 
 public class StoryImplTests {
     private static final int TITLE_MIN_LENGTH = 10;
