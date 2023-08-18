@@ -61,6 +61,7 @@ public class MemberImpl implements Member {
         }
 
 
+
     }
     //TODO
     public void addActivity(History activity) {
