@@ -61,11 +61,16 @@ public class MemberImpl implements Member {
         }
 
 
-
     }
     //TODO
-    public void addActivity(History activity) {
-        history.add(activity);
+    @Override
+    public void addActivity(String activity) {
+        history.add(new History(activity));
+    }
+
+    @Override
+    public void getHistory(String format) {
+
     }
 
     @Override

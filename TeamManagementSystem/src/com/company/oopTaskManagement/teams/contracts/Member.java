@@ -19,6 +19,7 @@ public interface Member {
 
      void removeCommentToTask(Task taskToRemoveComment, CommentImpl commentToRemove);
 
+     void addActivity(String activity);
 
-   //  void addActivity(String activity);
+    void getHistory(String format);
 }

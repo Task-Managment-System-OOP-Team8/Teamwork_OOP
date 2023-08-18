@@ -66,12 +66,11 @@ public abstract class TaskImpl implements Task {
         comments.add(comment);
 
     }
-
-    //TODO - Коментарите още не са ок, историята също
-
-    public void addHistory(String input) {
+    @Override
+    public void addActivity(String input) {
         history.add(new History(input));
     }
+
 
     public void displayHistory() {
         for (History log : history) {

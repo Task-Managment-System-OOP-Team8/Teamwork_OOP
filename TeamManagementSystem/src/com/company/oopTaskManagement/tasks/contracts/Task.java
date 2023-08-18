@@ -13,7 +13,7 @@ public interface Task extends  Printable,Commentable {
 
     void addComment(Comment comment);
 
-    void addHistory(String history);
+    void addActivity(String activity);
 
 //comments? history?
 }

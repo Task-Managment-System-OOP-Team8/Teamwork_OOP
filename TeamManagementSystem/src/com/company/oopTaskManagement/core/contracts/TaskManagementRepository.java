@@ -16,7 +16,6 @@ public interface TaskManagementRepository {
     List<Member> getMembers();
 
     List<Team> getTeams();
-
     List<Board> getBoards();
 
     List<History> getHistory();
@@ -35,12 +34,10 @@ public interface TaskManagementRepository {
 
     Feedback createFeedback(String title, String description, int rating);
 
-    Comment createComment(String author, String message);
+    Comment createComment(String message, String author);
 
-    Member addMember(Member memberToAdd);
-    History addActivity(History activityToAdd);
-
-    Board addBoard(Board boardName);
+   Member addMember(Member memberToAdd);
+   Board addBoard(Board boardName);
 
     Bug addBug(Bug bugTitle);
 
@@ -52,7 +49,7 @@ public interface TaskManagementRepository {
 
     Member findMemberByUsername(String username);
 
-    Board findBoardByName(String boardName);
+    Board findBoardByName( String boardName);
 
     List<Bug> getBugs();
 
@@ -65,7 +62,11 @@ public interface TaskManagementRepository {
 
    Team findTeamByName(String teamName);
 
+    void login(Member memberByUsername);
+    boolean hasLoggedInUser();
+   Member getLoggedInUser();
 
+    void logout();
 
 
     // History showAllHistory( ArrayList<String> history);

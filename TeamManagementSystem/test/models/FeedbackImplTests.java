@@ -22,14 +22,12 @@ public class FeedbackImplTests {
 
     @Test
     public void constructor_Should_InitializeTitle_When_ArgumentsAreValid() {
-        FeedbackImpl feedback = getFeedback();
-        Assertions.assertEquals(VALID_TITLE, feedback.getTitle());
+        Assertions.assertEquals(VALID_TITLE, getFeedback().getTitle());
     }
 
     @Test
     public void constructor_Should_InitializeDescription_When_ArgumentsAreValid() {
-        FeedbackImpl feedback = getFeedback();
-        Assertions.assertEquals(VALID_DESCRIPTION, feedback.getDescription());
+        Assertions.assertEquals(VALID_DESCRIPTION,getFeedback().getDescription());
     }
 
 
@@ -40,8 +38,8 @@ public class FeedbackImplTests {
 
     @Test
     public void constructor_Should_InitializeRating_When_ArgumentsAreValid(){
-        FeedbackImpl feedback = getFeedback();
-        Assertions.assertEquals(1,feedback.getRating());
+
+        Assertions.assertEquals(1,getFeedback().getRating());
     }
 
     @Test
@@ -57,6 +55,7 @@ public class FeedbackImplTests {
     public void constructor_Should_ThrowException_When_RatingIsInvalid(){
         Assertions.assertNotEquals(0,getFeedback().getRating());
     }
+
 
     private FeedbackImpl getFeedback() {
         return new FeedbackImpl(

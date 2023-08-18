@@ -3,7 +3,7 @@ package com.company.oopTaskManagement.commands.Enums;
 public enum CommmandType {
     CREATEMEMBER, //done
     CREATETEAM, //done
-    CREATEANEWBOARD, // done
+    CREATEBOARD, // done
     CREATEBUG, //done
     CREATESTORY, // done
     CREATEFEEDBACK, // done
@@ -24,6 +24,8 @@ public enum CommmandType {
     LISTTASKS,
     ADDCOMMENTTOTASK, //done
 
+LOGIN,
+    LOGOUT,
 
     //TODO
 //    ASSIGNTASKTOAMEMBER

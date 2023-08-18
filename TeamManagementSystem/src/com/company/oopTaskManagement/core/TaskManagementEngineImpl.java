@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TaskManagementEngineImpl implements TaskManagementEngine {
 
@@ -66,7 +68,7 @@ public class TaskManagementEngineImpl implements TaskManagementEngine {
     }
     private List<String> extractCommandParameters(String inputLine) {
         if (inputLine.contains(COMMENT_OPEN_SYMBOL)) {
-            return extractCommentParameters(inputLine);
+            return extractDescriptionParameters(inputLine);
         }
         String[] commandParts = inputLine.split(" ");
         List<String> parameters = new ArrayList<>();
@@ -75,19 +77,30 @@ public class TaskManagementEngineImpl implements TaskManagementEngine {
         }
         return parameters;
     }
-
-    public List<String> extractCommentParameters(String fullCommand) {
+    public List<String> extractDescriptionParameters(String fullCommand) {
         int indexOfFirstSeparator = fullCommand.indexOf(MAIN_SPLIT_SYMBOL);
-        int indexOfOpenComment = fullCommand.indexOf(COMMENT_OPEN_SYMBOL);
-        int indexOfCloseComment = fullCommand.indexOf(COMMENT_CLOSE_SYMBOL);
-        List<String> parameters = new ArrayList<>();
-        if (indexOfOpenComment >= 0) {
-            parameters.add(fullCommand.substring(indexOfOpenComment + COMMENT_OPEN_SYMBOL.length(), indexOfCloseComment));
-            fullCommand = fullCommand.replaceAll("\\{\\{.+(?=}})}}", "");
-        }
 
-        List<String> result = new ArrayList<>(Arrays.asList(fullCommand.substring(indexOfFirstSeparator + 1).split(MAIN_SPLIT_SYMBOL)));
+        List<String> parameters = new ArrayList<>();
+        Pattern pattern = Pattern.compile("\\{\\{(.+?)}}");
+        Matcher matcher = pattern.matcher(fullCommand);
+
+// Step 1: Extract content within "{{ }}" tags using regular expression
+        while (matcher.find()) {
+            parameters.add(matcher.group(1));
+        }
+// Step 2: Remove the extracted description parts from the fullCommand
+
+        fullCommand = fullCommand.replaceAll("\\{\\{.+?}}", "");
+
+// Step 3: Split the remaining string using MAIN_SPLIT_SYMBOL
+        List<String> result = new ArrayList<>(Arrays.asList(fullCommand
+                .substring(indexOfFirstSeparator + 1)
+                .split(MAIN_SPLIT_SYMBOL)));
+
+// Step 4: Remove empty, null, or whitespace elements from the result list
         result.removeAll(Arrays.asList(" ", "", null));
+
+// Step 5: Combine the description parameters and the split result
         parameters.addAll(result);
         return parameters;
     }

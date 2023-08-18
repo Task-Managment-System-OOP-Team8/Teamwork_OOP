@@ -14,10 +14,15 @@ public class CreateFeedbackCommand extends BaseCommand {
     }
 
     @Override
+    protected boolean requiresLogin() {
+        return true;
+    }
+
+    @Override
     protected String executeCommand(List<String> parameters) {
         ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS);
-        String feedbackTitle = parameters.get(0);
-        String feedbackDescription = parameters.get(1);
+        String feedbackTitle = parameters.get(1);
+        String feedbackDescription = parameters.get(0);
         int feedbackRating = Integer.parseInt(parameters.get(2));
 
         return createFeedback(feedbackTitle, feedbackDescription, feedbackRating);
@@ -28,6 +33,4 @@ public class CreateFeedbackCommand extends BaseCommand {
         getTaskManagementRepository().addFeedback(feedback);
         return String.format(FEEDBACK_S_CREATED_SUCCESSFULLY, title);
     }
-
-
 }

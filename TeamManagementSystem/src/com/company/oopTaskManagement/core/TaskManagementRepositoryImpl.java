@@ -31,6 +31,9 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     public static final String NO_VALID_BOARD_NAME = "There is no board with name: %s";
     public static final String TEAM_DOES_NOT_EXIST = "A team with %s name does not exist.";
     public static final String TASK_DOES_NOT_EXIST = "Task with name %s doesn't exist.";
+    public static final String MEMBER_WITH_NAME_DOES_NOT_EXIST = "Member with name %s, doesn't exist!";
+    public static final String BOARD_WITH_NAME_S_DOES_NOT_EXIST = "Board with name %s does not exist!";
+    private static final String NO_LOGGED_IN_USER = "There is no logged in user.";
     private int nextId;
     private List<Member> member;
     private List<Team> teams;
@@ -39,8 +42,10 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     private List<Story> stories;
     private List<Feedback> feedbacks;
     private List<Comment> comments;
+    private List<History> histories;
 
     private List<TaskImpl> task;
+    private Member loggedUser;
 
     public TaskManagementRepositoryImpl() {
         nextId = 1;
@@ -52,6 +57,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         this.member = new ArrayList<>();
         this.teams = new ArrayList<>();
         this.task = new ArrayList<>();
+        this.loggedUser = null;
     }
 
     @Override
@@ -71,7 +77,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     @Override
     public List<History> getHistory() {
-        return null;
+        return new ArrayList<>(histories);
     }
 
     @Override
@@ -82,9 +88,9 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 //        members.add(memberToAdd);
 //        return memberToAdd;
         boolean memberExists =
-       this.member
-               .stream()
-               .anyMatch(member -> member.getName().equalsIgnoreCase(memberToAdd.getName()));
+                this.member
+                        .stream()
+                        .anyMatch(member -> member.getName().equalsIgnoreCase(memberToAdd.getName()));
         if (memberExists) {
             member.add(memberToAdd);
             return memberToAdd;
@@ -92,10 +98,10 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
         throw new IllegalArgumentException(THIS_MEMBER_ALREADY_EXISTS);
     }
 
-    @Override
-    public History addActivity(History activityToAdd) {
-        return null;
-    }
+//    @Override
+//    public History addActivity(History activityToAdd) {
+//        return histories.add(new History(activityToAdd));
+//    }
 
     @Override
     public Board addBoard(Board boardName) {
@@ -154,7 +160,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     @Override
     public Board findBoardByName(String boardName) {
-        return boards.stream()
+        return this.boards.stream()
                 .filter(board -> board.getName().equalsIgnoreCase(boardName))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(String.format(NO_VALID_BOARD_NAME, boardName)));
@@ -175,7 +181,7 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
 
     @Override
     public Story createStory(String title, String description, PriorityEnums priority,
-                                 SizeEnums size, String assignee) {
+                             SizeEnums size, String assignee) {
         Story story = new StoryImpl(title, description, priority, size, assignee);
         this.stories.add(story);
         return story;
@@ -189,8 +195,8 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
     }
 
     @Override
-    public Comment createComment(String author, String message) {
-        Comment comment = new CommentImpl(author, message);
+    public Comment createComment(String content, String author) {
+        Comment comment = new CommentImpl( content,author);
         this.comments.add(comment);
         return comment;
     }
@@ -233,4 +239,28 @@ public class TaskManagementRepositoryImpl implements TaskManagementRepository {
                 .orElseThrow(() -> new IllegalArgumentException(String.format(TEAM_DOES_NOT_EXIST, teamName)));
     }
 
+    @Override
+    public void login(Member memberByUsername) {
+        loggedUser = memberByUsername;
+
+    }
+
+    @Override
+    public boolean hasLoggedInUser() {
+        return loggedUser != null;
+    }
+
+    @Override
+    public Member getLoggedInUser() {
+        if (loggedUser == null) {
+            throw new IllegalArgumentException(NO_LOGGED_IN_USER);
+        }
+        return loggedUser;
+    }
+
+    @Override
+    public void logout() {
+
+    }
 }
+

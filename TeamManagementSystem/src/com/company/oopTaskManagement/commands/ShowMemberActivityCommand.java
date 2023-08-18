@@ -16,6 +16,11 @@ import java.util.List;
         }
 
         @Override
+        protected boolean requiresLogin() {
+            return true;
+        }
+
+        @Override
         protected String executeCommand(List<String> parameters) {
             ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS);
             String username = parameters.get(0);

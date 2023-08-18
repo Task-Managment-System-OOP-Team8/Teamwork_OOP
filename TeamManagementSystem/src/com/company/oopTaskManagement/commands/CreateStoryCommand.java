@@ -16,11 +16,16 @@ public class CreateStoryCommand extends BaseCommand {
     }
 
     @Override
+    protected boolean requiresLogin() {
+        return true;
+    }
+
+    @Override
     protected String executeCommand(List<String> parameters) {
 
         ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS);
-        String storyTitle = parameters.get(0);
-        String description = parameters.get(1);
+        String storyTitle = parameters.get(1);
+        String description = parameters.get(0);
         PriorityEnums priority = ParsingHelpers.tryParseEnum(parameters.get(2), PriorityEnums.class);
         SizeEnums size = ParsingHelpers.tryParseEnum(parameters.get(3), SizeEnums.class);
         String assignee = parameters.get(4);

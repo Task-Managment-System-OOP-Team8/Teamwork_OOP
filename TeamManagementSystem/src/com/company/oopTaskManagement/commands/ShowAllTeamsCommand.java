@@ -16,6 +16,11 @@ public class ShowAllTeamsCommand extends BaseCommand{
     }
 
     @Override
+    protected boolean requiresLogin() {
+        return true;
+    }
+
+    @Override
     protected String executeCommand(List<String> parameters) {
         ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS);
         return showTeamsCommand();

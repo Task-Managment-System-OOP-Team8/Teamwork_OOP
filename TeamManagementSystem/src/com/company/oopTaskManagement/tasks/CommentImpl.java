@@ -8,7 +8,7 @@ public class CommentImpl implements Comment {
     private final String author;
 
 
-    public CommentImpl(String author, String content) {
+    public CommentImpl(String content, String author) {
         this.author = author;
         setContent(content);
     }

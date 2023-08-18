@@ -25,22 +25,21 @@ public class BugImplTests {
     private static final int DESCRIPTION_MIN_LENGTH = 10;
     private static final int DESCRIPTION_MAX_LENGTH = 500;
 
-    private static final String VALID_TITLE = TestUtilities.getString(TITLE_MIN_LENGTH + 1);
-    private static final String INVALID_TITLE = TestUtilities.getString(TITLE_MAX_LENGTH + 1);
-    private static final String VALID_DESCRIPTION = TestUtilities.getString(DESCRIPTION_MIN_LENGTH + 1);
+    private static final String VALID_TITLE = TestUtilities.getString(TITLE_MIN_LENGTH);
+    private static final String INVALID_TITLE = TestUtilities.getString(TITLE_MAX_LENGTH+1);
+    private static final String VALID_DESCRIPTION = TestUtilities.getString(DESCRIPTION_MIN_LENGTH);
 
-    private static final String INVALID_DESCRIPTION = TestUtilities.getString(DESCRIPTION_MAX_LENGTH + 1);
+    private static final String INVALID_DESCRIPTION = TestUtilities.getString(DESCRIPTION_MAX_LENGTH+1);
 
     @Test
     public void constructor_Should_InitializeTitle_When_ArgumentsAreValid() {
-        BugImpl bug = getBug();
-        Assertions.assertEquals(VALID_TITLE, bug.getTitle());
+
+        Assertions.assertEquals(VALID_TITLE, getBug().getTitle());
     }
 
     @Test
     public void constructor_Should_InitializeDescription_When_ArgumentsAreValid() {
-        BugImpl bug = getBug();
-        Assertions.assertEquals(VALID_DESCRIPTION, bug.getDescription());
+        Assertions.assertEquals(VALID_DESCRIPTION, getBug().getDescription());
     }
 
     @Test
@@ -69,9 +68,7 @@ public class BugImplTests {
 
     @Test
     public void constructor_Should_InitializeStatus_When_ArgumentsAreValid() {
-        Assertions.assertEquals(2, BugEnums.values().length);
-        Assertions.assertEquals(BugEnums.ACTIVE, BugEnums.valueOf("ACTIVE"));
-        Assertions.assertEquals(BugEnums.FIXED, BugEnums.valueOf("FIXED"));
+    Assertions.assertEquals(BugEnums.ACTIVE,getBug().getStatus());
     }
 
     @Test
@@ -85,8 +82,8 @@ public class BugImplTests {
     }
     @Test
     public void constructor_Should_InitializeAssignee(){
-        BugImpl bug = getBug();
-        Assertions.assertEquals("Assignee",bug.getAssignee());
+
+        Assertions.assertEquals("Assignee",getBug().getAssignee());
     }
 
     private BugImpl getBug() {

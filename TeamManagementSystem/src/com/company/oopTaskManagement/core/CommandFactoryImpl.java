@@ -26,7 +26,7 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new CreateBugCommand(taskManagementRepository);
             case SHOWBOARDSACTIVITY:
                 return new ShowBoardsActivityCommand(taskManagementRepository);
-            case CREATEANEWBOARD:
+            case CREATEBOARD:
                 return new CreateBoardCommand(taskManagementRepository);
             case CREATEFEEDBACK:
                 return new CreateFeedbackCommand(taskManagementRepository);
@@ -56,10 +56,10 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ListTaskCommand(taskManagementRepository);
             case ADDCOMMENTTOTASK:
                 return new AddCommentToTaskCommand(taskManagementRepository);
-       //     case SHOWALLMEMBERSTEAM:
-      //          return new ShowAllTeamMembersCommand(taskManagementRepository);
-
-
+            case LOGIN:
+         //       return new LogInCommand(taskManagementRepository);
+            case LOGOUT:
+                return new LogOutCommand(taskManagementRepository);
             default:
                 throw new IllegalArgumentException(String.format(INVALID_COMMAND,commmandType));
 

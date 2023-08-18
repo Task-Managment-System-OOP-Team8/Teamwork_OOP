@@ -16,6 +16,11 @@ public class ShowAllTeamBoardsCommand extends BaseCommand{
         super(taskManagementRepository);
     }
 
+    @Override
+    protected boolean requiresLogin() {
+        return true;
+    }
+
     //todo- грешка в toString
     @Override
     public String executeCommand(List<String> parameters) {
