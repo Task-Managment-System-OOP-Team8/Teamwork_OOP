@@ -5,6 +5,7 @@ import com.company.oopTaskManagement.commands.contracts.Command;
 import com.company.oopTaskManagement.core.contracts.TaskManagementRepository;
 import com.company.oopTaskManagement.tasks.contracts.Bug;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ListBugCommand implements Command {
 

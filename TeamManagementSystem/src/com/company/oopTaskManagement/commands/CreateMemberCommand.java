@@ -14,7 +14,7 @@ public class CreateMemberCommand extends BaseCommand{
     }
 
     @Override
-    protected String executeCommand(List<String> parameters) {
+    public String executeCommand(List<String> parameters) {
         ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS);
         String username = parameters.get(0);
 
