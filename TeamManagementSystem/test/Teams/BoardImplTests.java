@@ -1,4 +1,4 @@
-package models;
+package Teams;
 
 import com.company.oopTaskManagement.tasks.History;
 import com.company.oopTaskManagement.tasks.contracts.Comment;

@@ -13,10 +13,7 @@ public class FeedbackImpl extends TaskImpl implements com.company.oopTaskManagem
         super(title,description);
        setRating(rating);
         this.status= FeedbackEnums.NEW;
-
     }
-
-
     @Override
     public int getRating() {
         return rating;
